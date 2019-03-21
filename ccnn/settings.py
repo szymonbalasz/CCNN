@@ -24,10 +24,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = config('SECRET_KEY')
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['.herokuapp.com']
 
 
 # Application definition
@@ -78,9 +79,15 @@ WSGI_APPLICATION = 'ccnn.wsgi.application'
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(default=config('DATABASE_URL'))
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        
+    }
 }
 
+DATABASES['default'] = dj_database_url.config(default=config('DATABASE_URL'))
+theDB = dj_database_url.config(conn_max_age=600)
+DATABASES['default'].update(theDB)
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
