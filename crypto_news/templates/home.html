@@ -3,14 +3,16 @@
 {% block title %}CCNN | Home{% endblock %}
 
 {% block body %}
+{% load static %}
     <!-- Content -->      
     <section class="section-wrap main-content">
-      <div class="container">
+      <div class="container">    
         <div class="row">
 
           <!-- Posts -->
           <div class="col-lg-8 blog__content mb-30">
 
+          <img src="{% static 'sz.png' %}" alt="My image">
             <!-- Featured Post -->
             <article class="entry">
               <div class="thumb-bg-holder thumb-container thumb-65">
@@ -22,7 +24,9 @@
               <div class="thumb-text-holder">
                 <a href="single-post.html" class="entry__meta-category">investment</a>   
                 <h1 class="thumb-entry-title">
-                  <a href="single-post.html">Removing Bitcoin payments from Steam is a smart move by Valve</a>
+                  <a href="single-post.html">BTC Price: $
+                  
+              		</a>
                 </h1>
               </div>
             </article> <!-- end featured post -->
@@ -78,6 +82,8 @@
             <section>
               <h3 class="section-title h2">Recent News</h3>
               <div class="row">
+
+
                 <div class="col-lg-4 col-md-6">
                   <article class="entry">
                     <a href="categories.html" class="entry__meta-category">education</a>
@@ -203,8 +209,30 @@
             <!-- Widget Crypto Rates -->
             <div class="widget widget-crypto-rates">
               <h4 class="widget-title">Cryptocurrency Prices</h4>
-              <div class="crypto-rates" id="crypto-rates"></div>
+              <div class="crypto-rates">
+              
+              		{% for x in price %}
+
+                  	{% if x.symbol ==  "BTC" %}
+					<div>
+						<img class="crypto-rates__img" src="https://raw.githubusercontent.com/atomiclabs/cryptocurrency-icons/master/32/color/{{x.symbol|lower}}.png">
+                  		<span class='crypto-rates__name'>{{x.name}}</span>
+                  		<span class='crypto-rates__price'>$ {{x.quote.USD.price|floatformat:2}}</span>
+                  		{% if x.quote.USD.percent_change_1h > 0 %}
+	                  		<span class='crypto-rates__percent crypto-rates__percent--up'>{{x.quote.USD.percent_change_1h|floatformat:2}}%</span>
+	                  	{% else %}
+	                  		<span class='crypto-rates__percent crypto-rates__percent--down'>{{x.quote.USD.percent_change_1h|floatformat:2}}%</span>
+                  		{% endif %}
+              		</div>
+
+                  	{% endif %}
+                  {% endfor %}
+
+            	</div>  
             </div>
+
+            <!-- Widget Crypto Portfolio -->
+
 
             <!-- Widget Featured ICO's -->
             <div class="widget widget-featured-icos">
