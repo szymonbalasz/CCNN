@@ -1,8 +1,547 @@
 {% extends 'base.html' %}
-{% load static %}
+
 {% block title %}CCNN | Home{% endblock %}
 
 {% block body %}
+    <!-- Content -->      
+    <section class="section-wrap main-content">
+      <div class="container">
+        <div class="row">
 
-<img src="{% static 'logoBlack.png' %}" alt="logo">
+          <!-- Posts -->
+          <div class="col-lg-8 blog__content mb-30">
+
+            <!-- Featured Post -->
+            <article class="entry">
+              <div class="thumb-bg-holder thumb-container thumb-65">
+                <img data-src="img/blog/featured_post_img.jpg" src="img/empty.png" class="lazyload" alt="">
+                <a href="single-post.html" class="thumb-url"></a>
+                <div class="bottom-gradient"></div>
+              </div>
+
+              <div class="thumb-text-holder">
+                <a href="single-post.html" class="entry__meta-category">investment</a>   
+                <h1 class="thumb-entry-title">
+                  <a href="single-post.html">Removing Bitcoin payments from Steam is a smart move by Valve</a>
+                </h1>
+              </div>
+            </article> <!-- end featured post -->
+
+            <!-- Hot News -->
+            <section class="section">
+              <h3 class="section-title h2">Hot News</h3>
+              <div class="row">
+                <div class="col-md-6">
+                  <article class="entry">
+                    <a href="categories.html" class="entry__meta-category">currency market</a>
+                    <div class="entry__img-holder">
+                      <a href="single-post.html">
+                        <div class="thumb-container thumb-75">
+                          <img data-src="img/blog/post_1.jpg" src="img/empty.png" class="entry__img lazyload" alt="" />
+                        </div>
+                      </a>
+                    </div>
+
+                    <div class="entry__body">
+                      <div class="entry__header">
+                        <h2 class="entry__title entry__title--medium">
+                          <a href="single-post.html">Bitcoin Fees: Possible Solutions and Scenarios</a>
+                        </h2>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+                <div class="col-md-6">
+                  <article class="entry">
+                    <a href="categories.html" class="entry__meta-category">education</a>
+                    <div class="entry__img-holder">
+                      <a href="single-post.html">
+                        <div class="thumb-container thumb-75">
+                          <img data-src="img/blog/post_2.jpg" src="img/empty.png" class="entry__img lazyload" alt="" />
+                        </div>
+                      </a>
+                    </div>
+
+                    <div class="entry__body">
+                      <div class="entry__header">                        
+                        <h2 class="entry__title entry__title--medium">
+                          <a href="single-post.html">Navigating The ICO Gold Rush – 4 Critical ICO Evaluation Factors</a>
+                        </h2>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+              </div> 
+            </section> <!-- end hot news -->
+
+            <!-- Recent News -->
+            <section>
+              <h3 class="section-title h2">Recent News</h3>
+              <div class="row">
+                <div class="col-lg-4 col-md-6">
+                  <article class="entry">
+                    <a href="categories.html" class="entry__meta-category">education</a>
+                    <div class="entry__img-holder">
+                      <a href="single-post.html">
+                        <div class="thumb-container thumb-60">
+                          <img data-src="img/blog/post_3.jpg" src="img/empty.png" class="entry__img lazyload" alt="" />
+                        </div>
+                      </a>
+                    </div>
+                    <div class="entry__body">
+                      <div class="entry__header">
+                        <h2 class="entry__title">
+                          <a href="single-post.html">How to Read a Blockchain Explorer</a>
+                        </h2>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                  <article class="entry">
+                    <a href="categories.html" class="entry__meta-category">investment</a>
+                    <div class="entry__img-holder">
+                      <a href="single-post.html">
+                        <div class="thumb-container thumb-60">
+                          <img data-src="img/blog/post_4.jpg" src="img/empty.png" class="entry__img lazyload" alt="" />
+                        </div>
+                      </a>
+                    </div>
+                    <div class="entry__body">
+                      <div class="entry__header">
+                        <h2 class="entry__title">
+                          <a href="single-post.html">Growth Hacking Your ICO – 7 Steps to Successful Token Sale</a>
+                        </h2>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                  <article class="entry">
+                    <a href="categories.html" class="entry__meta-category">ICO’s</a>
+                    <div class="entry__img-holder">
+                      <a href="single-post.html">
+                        <div class="thumb-container thumb-60">
+                          <img data-src="img/blog/post_5.jpg" src="img/empty.png" class="entry__img lazyload" alt="" />
+                        </div>
+                      </a>
+                    </div>
+                    <div class="entry__body">
+                      <div class="entry__header">
+                        <h2 class="entry__title">
+                          <a href="single-post.html">Litecoin Mining: Scrypt Algorithm for a Leading Coin</a>
+                        </h2>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                  <article class="entry">
+                    <a href="categories.html" class="entry__meta-category">mining</a>
+                    <div class="entry__img-holder">
+                      <a href="single-post.html">
+                        <div class="thumb-container thumb-60">
+                          <img data-src="img/blog/post_6.jpg" src="img/empty.png" class="entry__img lazyload" alt="" />
+                        </div>
+                      </a>
+                    </div>
+                    <div class="entry__body">
+                      <div class="entry__header">
+                        <h2 class="entry__title">
+                          <a href="single-post.html">How to Buy Litecoin: Get your First Digital Silver</a>
+                        </h2>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                  <article class="entry">
+                    <a href="categories.html" class="entry__meta-category">reviews</a>
+                    <div class="entry__img-holder">
+                      <a href="single-post.html">
+                        <div class="thumb-container thumb-60">
+                          <img data-src="img/blog/post_7.jpg" src="img/empty.png" class="entry__img lazyload" alt="" />
+                        </div>
+                      </a>
+                    </div>
+                    <div class="entry__body">
+                      <div class="entry__header">
+                        <h2 class="entry__title">
+                          <a href="single-post.html">ChronoBank: What's in the Near Future?</a>
+                        </h2>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                  <article class="entry">
+                    <a href="categories.html" class="entry__meta-category">investment</a>
+                    <div class="entry__img-holder">
+                      <a href="single-post.html">
+                        <div class="thumb-container thumb-60">
+                          <img data-src="img/blog/post_8.jpg" src="img/empty.png" class="entry__img lazyload" alt="" />
+                        </div>
+                      </a>
+                    </div>
+                    <div class="entry__body">
+                      <div class="entry__header">
+                        <h2 class="entry__title">
+                          <a href="single-post.html">The Simple Way to Get on Board with Cryptocurrency</a>
+                        </h2>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+              </div> 
+            </section> <!-- end recent news -->
+
+          </div> <!-- end posts -->
+
+          <!-- Sidebar -->
+          <aside class="col-lg-4 sidebar sidebar--right">
+
+            <!-- Widget Crypto Rates -->
+            <div class="widget widget-crypto-rates">
+              <h4 class="widget-title">Cryptocurrency Prices</h4>
+              <div class="crypto-rates" id="crypto-rates"></div>
+            </div>
+
+            <!-- Widget Featured ICO's -->
+            <div class="widget widget-featured-icos">
+              <h4 class="widget-title">Featured ICO's</h4>
+              <ul class="widget-featured-icos__list">
+                <li class="widget-featured-icos__item">
+                  <a href="#" class="widget-featured-icos__url">
+                    <img src="img/blog/ico_1.png" alt="">
+                    <span class="widget-featured-icos__title">ClearCoin</span>
+                    <span class="widget-featured-icos__launch">Starts in:</span>
+                    <span class="widget-featured-icos__time">66 days</span>
+                  </a>
+                </li>
+                <li class="widget-featured-icos__item">
+                  <a href="#" class="widget-featured-icos__url">
+                    <img src="img/blog/ico_2.png" alt="">
+                    <span class="widget-featured-icos__title">Monetha</span>
+                    <span class="widget-featured-icos__launch">Starts in:</span>
+                    <span class="widget-featured-icos__time">12 days</span>
+                  </a>
+                </li>
+                <li class="widget-featured-icos__item">
+                  <a href="#" class="widget-featured-icos__url">
+                    <img src="img/blog/ico_3.png" alt="">
+                    <span class="widget-featured-icos__title">HelloGold</span>
+                    <span class="widget-featured-icos__launch">Starts in:</span>
+                    <span class="widget-featured-icos__time">3 days</span>
+                  </a>
+                </li>
+              </ul>
+            </div> <!-- end widget featured icos -->
+
+            <!-- Widget Socials -->
+            <div class="widget widget-socials">
+              <div class="socials justify-content-center">
+                <a class="social social-facebook" href="#" title="facebook" target="_blank" aria-label="facebook">
+                  <i class="ui-facebook"></i>
+                </a><!--
+                --><a class="social social-twitter" href="#" title="twitter" target="_blank" aria-label="twitter">
+                  <i class="ui-twitter"></i>
+                </a><!--
+                --><a class="social social-google-plus" href="#" title="google" target="_blank" aria-label="google">
+                  <i class="ui-google"></i>
+                </a><!--
+                --><a class="social social-instagram" href="#" title="instagram" target="_blank" aria-label="instagram">
+                  <i class="ui-instagram"></i>
+                </a><!--
+                --><a class="social social-youtube" href="#" title="youtube" target="_blank" aria-label="youtube">
+                  <i class="ui-youtube"></i>
+                </a><!--
+                --><a class="social social-rss" href="#" title="rss" target="_blank" aria-label="rss">
+                  <i class="ui-rss"></i>
+                </a>
+              </div>
+            </div> <!-- end widget socials -->
+
+            <!-- Widget Newsletter -->
+            <div class="widget widget_mc4wp_form_widget">
+              <h4 class="widget-title">Subscribe for News</h4>
+              <form class="mc4wp-form" method="post">
+                <div class="mc4wp-form-fields">
+                  <div class="form-group">
+                    <i class="ui-email"></i>
+                    <input type="email" name="EMAIL" placeholder="Your email" required="">
+                  </div>
+                  <input type="submit" class="btn btn-md btn-color" value="Subscribe">
+                </div>
+              </form>
+            </div> <!-- end widget newsletter -->
+
+            <!-- Widget Popular Posts -->
+            <div class="widget widget-popular-posts">
+              <h4 class="widget-title">Popular Posts</h4>
+
+              <ul class="widget-popular-posts__list">
+                <li class="widget-popular-posts__item">
+                  <article>
+                    <div class="widget-popular-posts__entry">
+                      <a href="categories.html" class="entry__meta-category">mining</a>
+                      <h3 class="widget-popular-posts__entry-title">
+                        <a href="single-post.html">Bitcoin Fees: Possible Solutions and Scenarios</a>
+                      </h3>
+                    </div>
+                  </article>
+                </li>
+                <li class="widget-popular-posts__item">
+                  <article>
+                    <div class="widget-popular-posts__entry">
+                      <a href="categories.html" class="entry__meta-category">mining</a>
+                      <h3 class="widget-popular-posts__entry-title">
+                        <a href="single-post.html">Bitcoin Fees: Possible Solutions and Scenarios</a>
+                      </h3>
+                    </div>
+                  </article>
+                </li>
+                <li class="widget-popular-posts__item">
+                  <article>
+                    <div class="widget-popular-posts__entry">
+                      <a href="categories.html" class="entry__meta-category">mining</a>
+                      <h3 class="widget-popular-posts__entry-title">
+                        <a href="single-post.html">Bitcoin Fees: Possible Solutions and Scenarios</a>
+                      </h3>
+                    </div>
+                  </article>
+                </li>
+              </ul>
+            </div> <!-- end widget popular posts -->
+
+          </aside> <!-- end sidebar -->
+
+        </div> <!-- end row -->
+      </div> <!-- end container -->
+    </section> <!-- end content -->
+
+    <!-- Videos -->
+    <section class="section-wrap pt-50 bg-dark">
+      <div class="container">
+        <h3 class="section-title h2 white">Videos</h3>
+        <div class="row">
+          <div class="col-lg-8">
+            <article class="entry">
+              <a href="single-post.html" class="entry__meta-category">investment</a>
+              <div class="entry__img-holder thumb-container thumb-60">
+                <img data-src="img/blog/video_1.jpg" src="img/empty.png" class="entry__img lazyload" alt="">
+                <a href="single-post.html" class="thumb-url"></a>
+                <a href="#" class="play-btn"></a>
+              </div>
+
+              <div class="entry__body">
+                <div class="entry__header">
+                  <h2 class="entry__title entry__title--large">
+                    <a href="single-post.html">Blockchain-based Mobile Payments Service Developed by Gates Foundation</a>
+                  </h2>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="col-lg-4 video-col--small">
+            <article class="entry">
+              <a href="single-post.html" class="entry__meta-category">investment</a>
+              <div class="entry__img-holder thumb-container thumb-60">
+                <img data-src="img/blog/video_2.jpg" src="img/empty.png" class="entry__img lazyload" alt="">
+                <a href="single-post.html" class="thumb-url"></a>
+              </div>
+
+              <div class="entry__body">
+                <div class="entry__header">
+                  <h2 class="entry__title">
+                    <a href="single-post.html">Bitcoin Fees: Possible Solutions and Scenarios</a>
+                  </h2>
+                </div>
+              </div>
+            </article>
+            <article class="entry">
+              <a href="single-post.html" class="entry__meta-category">investment</a>
+              <div class="entry__img-holder thumb-container thumb-60">
+                <img data-src="img/blog/video_3.jpg" src="img/empty.png" class="entry__img lazyload" alt="">
+                <a href="single-post.html" class="thumb-url"></a>
+              </div>
+
+              <div class="entry__body">
+                <div class="entry__header">
+                  <h2 class="entry__title">
+                    <a href="single-post.html">Bitcoin Fees: Possible Solutions and Scenarios</a>
+                  </h2>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>      
+    </section> <!-- end videos -->
+
+    <!-- Ad -->
+    <section class="section-wrap">
+      <div class="container text-center">
+        <a href="#">
+          <img src="img/blog/placeholder_leaderboard.jpg" alt="">
+        </a>
+      </div>      
+    </section>
+
+    <!-- News by categories -->
+    <section class="section-wrap news-by-categories pt-20">
+      <div class="container">
+        <h3 class="section-title h2">News by Categories</h3>
+        <div class="row">
+          <div class="col-lg-3 col-md-6">
+            <article class="entry">
+              <a href="categories.html" class="entry__meta-category">education</a>
+              <div class="entry__img-holder">
+                <a href="single-post.html">
+                  <div class="thumb-container thumb-60">
+                    <img data-src="img/blog/post_9.jpg" src="img/empty.png" class="entry__img lazyload" alt="" />
+                  </div>
+                </a>
+              </div>
+              <div class="entry__body">
+                <div class="entry__header">
+                  <h2 class="entry__title">
+                    <a href="single-post.html">Best Bitcoin Exchanges Reviewed &amp; Compared</a>
+                  </h2>
+                </div>
+              </div>
+            </article>
+            <article class="entry">
+              <div class="entry__body">
+                <div class="entry__header">
+                  <h2 class="entry__title">
+                    <a href="single-post.html">ChronoBank: What's in the Near Future?</a>
+                  </h2>
+                </div>
+              </div>
+            </article>
+            <article class="entry">
+              <div class="entry__body">
+                <div class="entry__header">
+                  <h2 class="entry__title">
+                    <a href="single-post.html">Cryptocurrency Markets: Weekly Trading Overview (06-13 October)</a>
+                  </h2>
+                </div>
+              </div>
+            </article>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <article class="entry">
+              <a href="categories.html" class="entry__meta-category">investment</a>
+              <div class="entry__img-holder">
+                <a href="single-post.html">
+                  <div class="thumb-container thumb-60">
+                    <img data-src="img/blog/post_10.jpg" src="img/empty.png" class="entry__img lazyload" alt="" />
+                  </div>
+                </a>
+              </div>
+              <div class="entry__body">
+                <div class="entry__header">
+                  <h2 class="entry__title">
+                    <a href="single-post.html">MyEtherWallet Opens the Ethereum Universe for You</a>
+                  </h2>
+                </div>
+              </div>
+            </article>
+            <article class="entry">
+              <div class="entry__body">
+                <div class="entry__header">
+                  <h2 class="entry__title">
+                    <a href="single-post.html">How to Buy Litecoin: Get your First Digital Silver</a>
+                  </h2>
+                </div>
+              </div>
+            </article>
+            <article class="entry">
+              <div class="entry__body">
+                <div class="entry__header">
+                  <h2 class="entry__title">
+                    <a href="single-post.html">Growth Hacking Your ICO – 7 Steps to Successful Token Sale</a>
+                  </h2>
+                </div>
+              </div>
+            </article>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <article class="entry">
+              <a href="categories.html" class="entry__meta-category">education</a>
+              <div class="entry__img-holder">
+                <a href="single-post.html">
+                  <div class="thumb-container thumb-60">
+                    <img data-src="img/blog/post_11.jpg" src="img/empty.png" class="entry__img lazyload" alt="" />
+                  </div>
+                </a>
+              </div>
+              <div class="entry__body">
+                <div class="entry__header">
+                  <h2 class="entry__title">
+                    <a href="single-post.html">LocalBitcoins: Another Measure of Bitcoin's Popularity</a>
+                  </h2>
+                </div>
+              </div>
+            </article>
+            <article class="entry">
+              <div class="entry__body">
+                <div class="entry__header">
+                  <h2 class="entry__title">
+                    <a href="single-post.html">How to Read a Blockchain Explorer</a>
+                  </h2>
+                </div>
+              </div>
+            </article>
+            <article class="entry">
+              <div class="entry__body">
+                <div class="entry__header">
+                  <h2 class="entry__title">
+                    <a href="single-post.html">Navigating The ICO Gold Rush – 4 Critical ICO Evaluation Factors</a>
+                  </h2>
+                </div>
+              </div>
+            </article>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <article class="entry">
+              <a href="categories.html" class="entry__meta-category">ICO's</a>
+              <div class="entry__img-holder">
+                <a href="single-post.html">
+                  <div class="thumb-container thumb-60">
+                    <img data-src="img/blog/post_12.jpg" src="img/empty.png" class="entry__img lazyload" alt="" />
+                  </div>
+                </a>
+              </div>
+              <div class="entry__body">
+                <div class="entry__header">
+                  <h2 class="entry__title">
+                    <a href="single-post.html">Top VCs Back Record Breaking Filecoin ICO</a>
+                  </h2>
+                </div>
+              </div>
+            </article>
+            <article class="entry">
+              <div class="entry__body">
+                <div class="entry__header">
+                  <h2 class="entry__title">
+                    <a href="single-post.html">Litecoin Mining: Scrypt Algorithm for a Leading Coin</a>
+                  </h2>
+                </div>
+              </div>
+            </article>
+            <article class="entry">
+              <div class="entry__body">
+                <div class="entry__header">
+                  <h2 class="entry__title">
+                    <a href="single-post.html">ChronoBank: Reaching the Community and Markets</a>
+                  </h2>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section> <!-- end news by categories -->
 {% endblock %}
