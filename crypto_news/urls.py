@@ -9,4 +9,5 @@ urlpatterns = [
     path('register/', viewsAuth.registerUser, name="register"),
     path('editProfile/', viewsAuth.editProfile, name="editProfile"),
     path('changePassword/', viewsAuth.changePassword, name="changePassword"),
+    path('addCoin/', views.addCoin, name="addCoin"),
 ]

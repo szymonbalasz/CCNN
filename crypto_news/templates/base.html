@@ -50,8 +50,10 @@
     <nav class="sidenav__menu-container">
       <ul class="sidenav__menu" role="menubar">
         <li class="active">
-          <a href="index.html" class="sidenav__menu-link">Home</a>
+          <a class="sidenav__menu-link">Home</a>
         </li>
+
+        {%if user.is_authenticated%}
 
         <li>
           <a href="#" class="sidenav__menu-link">Posts</a>
@@ -63,50 +65,30 @@
           </ul>
         </li>
 
+
         <li>
-          <a href="#" class="sidenav__menu-link">Pages</a>
+          <a class="sidenav__menu-link">Account</a>
           <button class="sidenav__menu-toggle" aria-haspopup="true" aria-label="Open dropdown"><i class="ui-arrow-down"></i></button>
           <ul class="sidenav__menu-dropdown">
-            <li><a href="about.html" class="sidenav__menu-link">About</a></li>
-            <li><a href="contact.html" class="sidenav__menu-link">Contact</a></li>
-            <li><a href="search-results.html" class="sidenav__menu-link">Search Results</a></li>
-            <li><a href="categories.html" class="sidenav__menu-link">Categories</a></li>
-            <li><a href="404.html" class="sidenav__menu-link">404</a></li>
+            <li><a href="{%url 'editProfile'%}" class="sidenav__menu-link">Edit Profile</a></li>
+            <li><a href="{%url 'changePassword'%}" class="sidenav__menu-link">Change Password</a></li>
+            <li><a href="{%url 'logout'%}" class="sidenav__menu-link">Logout</a></li>
           </ul>
         </li>
 
-        <li>
-          <a href="#" class="sidenav__menu-link">Features</a>
-          <button class="sidenav__menu-toggle" aria-haspopup="true" aria-label="Open dropdown"><i class="ui-arrow-down"></i></button>
-          <ul class="sidenav__menu-dropdown">
-            <li><a href="lazyload.html" class="sidenav__menu-link">Lazy Load</a></li>
-            <li><a href="shortcodes.html" class="sidenav__menu-link">Shortcodes</a></li>
-          </ul>
-        </li>
+        {% else %}
 
         <li>
-          <a href="#" class="sidenav__menu-link">Purchase</a>
+          <a href="{%url 'login'%}" class="sidenav__menu-link">Login</a>
         </li>
+        <li>
+          <a href="{%url 'register'%}" class="sidenav__menu-link">Register</a>
+        </li>
+
+        {% endif %}
       </ul>
     </nav>
 
-    <div class="socials sidenav__socials"> 
-      <a class="social social--small social-facebook" href="#" target="_blank" aria-label="facebook">
-        <i class="ui-facebook"></i>
-      </a>
-      <a class="social social--small social-twitter" href="#" target="_blank" aria-label="twitter">
-        <i class="ui-twitter"></i>
-      </a>
-      <a class="social social--small social-google-plus" href="#" target="_blank" aria-label="google">
-        <i class="ui-google"></i>
-      </a>
-      <a class="social social--small social-youtube" href="#" target="_blank" aria-label="youtube">
-        <i class="ui-youtube"></i>
-      </a>
-      <a class="social social--small social-instagram" href="#" target="_blank" aria-label="instagram">
-        <i class="ui-instagram"></i>
-      </a>
-    </div>
   </header> <!-- end sidenav -->
 
   <main class="main oh" id="main">
@@ -175,8 +157,10 @@
               <ul class="nav__menu">
 
                 <li class="active">
-                  <a href="index.html">Home</a>
+                  <a>Home</a>
                 </li>
+
+                {%if user.is_authenticated%}
 
                 <li class="nav__dropdown">
                   <a href="#">Posts</a>
@@ -209,41 +193,39 @@
                   <a href="#">Purchase</a>
                 </li>
 
+                {% endif %}
+
               </ul> <!-- end menu -->
             </nav> <!-- end nav-wrap -->
 
             <!-- Nav Right -->
-            <div class="nav__right nav--align-right d-none d-lg-flex">
-
-              <!-- Socials -->
-              <div class="nav__right-item socials nav__socials"> 
-                <a class="social social-facebook social--nobase" href="#" target="_blank" aria-label="facebook">
-                  <i class="ui-facebook"></i>
-                </a>
-                <a class="social social-twitter social--nobase" href="#" target="_blank" aria-label="twitter">
-                  <i class="ui-twitter"></i>
-                </a>
-                <a class="social social-google social--nobase" href="#" target="_blank" aria-label="google">
-                  <i class="ui-google"></i>
-                </a>
-                <a class="social social-youtube social--nobase" href="#" target="_blank" aria-label="youtube">
-                  <i class="ui-youtube"></i>
-                </a>
-              </div>
-
-              <!-- Subscribe -->
-              <div class="nav__right-item nav__subscribe">
-                <a href="#" class="nav__subscribe-url" data-toggle="modal" data-target="#subscribe-modal">Subscribe</a>
-              </div>
-
-              <!-- Search -->
-              <div class="nav__right-item nav__search">
-                <a href="#" class="nav__search-trigger" id="nav__search-trigger">
-                  <i class="ui-search nav__search-trigger-icon"></i>
-                </a>                
-              </div>
-
-            </div> <!-- end nav right -->  
+          <div class="nav__right nav--align-right d-none d-lg-flex">
+          <nav class="flex-child nav__wrap d-none d-lg-block"> 
+          {%if user.is_authenticated%}
+            <ul class="nav__menu">
+              <li class="active"><a>Welcome, {{user.first_name}}</a></li>
+              <li class="nav__dropdown">
+                  <a>Account</a>
+                  <ul class="nav__dropdown-menu">
+                    <li><a href="{%url 'editProfile'%}">Edit Profile</a></li>
+                    <li><a href="{%url 'changePassword'%}">Change Password</a></li>
+                    <li><a href="{%url 'logout'%}">Logout</a></li>
+                  </ul>
+              </li>
+            
+            </ul>
+          {%else%}
+            <ul class="nav__menu">
+              <li class="nav-item">
+                <a class="nav-link" href="{%url 'login'%}">Login</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{%url 'register'%}">Register</a>
+              </li>
+            </ul>
+          {%endif%}
+          </nav>
+          </div> <!-- end nav right -->  
         
           </div> <!-- end flex-parent -->
         </div> <!-- end container -->

@@ -4,6 +4,21 @@
 
 {% block body %}
 {% load static %}
+
+{% if messages %}
+	{% for message in messages %}
+		<div class="alert alert-warning alert-dismissable" role="alert">
+  			{{ message }}
+  		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    		<span aria-hidden="true">&times;</span>
+  		</button>
+		</div>
+
+		
+	{% endfor %}
+
+{% endif %}
+
     <!-- Content -->      
     <section class="section-wrap main-content">
       <div class="container">    
@@ -12,7 +27,6 @@
           <!-- Posts -->
           <div class="col-lg-8 blog__content mb-30">
 
-          <img src="{% static 'sz.png' %}" alt="My image">
             <!-- Featured Post -->
             <article class="entry">
               <div class="thumb-bg-holder thumb-container thumb-65">
