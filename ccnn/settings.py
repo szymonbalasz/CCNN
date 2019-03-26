@@ -142,3 +142,5 @@ LOGGING = {
 }
 
 DEBUG_PROPAGATE_EXCEPTIONS = True
+
+LOGIN_URL = '/login/'

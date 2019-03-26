@@ -157,15 +157,15 @@
               <ul class="nav__menu">
 
                 <li class="active">
-                  <a>Home</a>
+                  <a href="{% url 'home' %}">Home</a>
                 </li>
 
                 {%if user.is_authenticated%}
 
                 <li class="nav__dropdown">
-                  <a href="#">Posts</a>
+                  <a>Your CryptoCurrency Portfolio</a>
                   <ul class="nav__dropdown-menu">
-                    <li><a href="single-post.html">Standard Post</a></li>
+                    <li><a href="{% url 'addCoin' %}">Add a Coin</a></li>
                     <li><a href="single-post-gallery.html">Gallery Post</a></li>
                   </ul>
                 </li>
@@ -231,7 +231,23 @@
         </div> <!-- end container -->
 
       </div>
-    </header> <!-- end navigation -->       
+    </header> <!-- end navigation -->  
+
+    {% if messages %}
+      {% for message in messages %}
+        <br/>
+        <div class="col-6 offset-3 alert alert-warning alert-dismissable" role="alert">
+            {{ message }}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <br/>
+        </div>
+
+        
+      {% endfor %}
+
+    {% endif %}     
 
     {% block body %}
 

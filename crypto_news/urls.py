@@ -4,6 +4,7 @@ from . import viewsAuth
 
 urlpatterns = [
     path('', views.home, name="home"),
+    path('about/', views.about, name="about"),
     path('login/', viewsAuth.loginUser, name="login"),
     path('logout/',  viewsAuth.logoutUser, name="logout"),
     path('register/', viewsAuth.registerUser, name="register"),

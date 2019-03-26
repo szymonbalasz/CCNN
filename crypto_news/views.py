@@ -6,6 +6,7 @@ from .forms import AddCoinForm
 from .models import Wallet
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 
 
 def home(request):
@@ -14,15 +15,19 @@ def home(request):
 
 	return render(request, 'home.html', {'news' : news, 'price' : price})
 
+def about(request):
+	return render(request, 'about.html', {})
+
+@login_required
 def addCoin(request):
 	if request.method == 'POST':
 		form = AddCoinForm(request.POST or None)
 		if form.is_valid():
-			form.save()
+			
 			messages.success(request, "Coins Added") 
 			return redirect('home')
 		else:
-			messages.success(request, "Error Adding CryptoCoin")
-			return redirect('home')
+			messages.success(request, "Error Adding Coins")
+			return render(request, 'coins/addCoin.html', {})
 	else:
-		return redirect('home')
+		return render(request, 'coins/addCoin.html', {})

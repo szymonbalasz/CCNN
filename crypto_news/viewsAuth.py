@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate, login, logout, update_session_auth
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
 from django.contrib import messages
 from .forms import SignUpForm, EditProfileForm
+from django.contrib.auth.decorators import login_required
 
 def loginUser(request):
 	if request.method ==  "POST":
@@ -19,6 +20,7 @@ def loginUser(request):
 	else:
 		return render(request, 'auth/login.html', {})
 
+@login_required
 def logoutUser(request):
 	logout(request)
 	messages.success(request, ('You Have Been Logged Out'))
@@ -40,6 +42,7 @@ def registerUser(request):
 	context = {'form' : form}
 	return render(request, 'auth/register.html', context)
 
+@login_required
 def editProfile(request):
 	if request.method == "POST":
 		form = EditProfileForm(request.POST, instance=request.user)
@@ -54,6 +57,7 @@ def editProfile(request):
 	return render(request, 'auth/editProfile.html', context)
 
 
+@login_required
 def changePassword(request):
 	if request.method == "POST":
 		form = PasswordChangeForm(data=request.POST, user=request.user)
