@@ -11,4 +11,5 @@ urlpatterns = [
     path('editProfile/', viewsAuth.editProfile, name="editProfile"),
     path('changePassword/', viewsAuth.changePassword, name="changePassword"),
     path('addCoin/', views.addCoin, name="addCoin"),
+    path('viewPortfolio/', views.viewPortfolio, name="viewPortfolio"),
 ]

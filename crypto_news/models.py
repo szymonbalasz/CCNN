@@ -17,3 +17,5 @@ class Wallet(models.Model):
 			self.wallet[symbol] = amount
 			self.save()
 
+	def getCoins(self):
+		return self.wallet
