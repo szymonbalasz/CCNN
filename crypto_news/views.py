@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect
 from django.contrib import messages
 from . import cryptoAPI
 from .forms import AddCoinForm
-from .models import Wallet
+from .models import Wallet, LatestAPI
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
@@ -13,6 +13,11 @@ def home(request):
 	price = cryptoAPI.cPrice()
 	news = cryptoAPI.cNews()
 
+	if LatestAPI.objects.get(pk=1).errorPrices:
+		messages.success(request, "API Error. Using stored crypto price data from: " + LatestAPI.objects.get(pk=1).getLastUpdate())
+
+	if LatestAPI.objects.get(pk=1).errorNews:
+		messages.success(request, "API Error. Using stored crypto news data")
 
 	return render(request, 'home.html', {'news' : news, 'price' : price})
 

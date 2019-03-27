@@ -15,10 +15,10 @@
 		      <th scope="col">Name</th>
 		      <th scope="col">Price</th>
 		      <th scope="col">CMC Rank</th>
-		      <th scope="col">1 hour Change</th>
-		      <th scope="col">24 hour Change</th>
+		      <th scope="col">1-hour Change</th>
+		      <th scope="col">24-hour Change</th>
 		      <th scope="col">Amount Held</th>
-		      <th scope="col">Total Value ($)</th>
+		      <th scope="col">Total Value</th>
 		    </tr>
 		  </thead>
 		  <tbody>
@@ -35,8 +35,24 @@
 					    	<span class='crypto-rates__price'>$ {{x.quote.USD.price|floatformat:2}}</span>
 					    </td>
 					    <td>{{x.cmc_rank}}</td>
-					    <td>{{x.quote.USD.percent_change_1h|floatformat:2}}</td>
-						<td>{{x.quote.USD.percent_change_24h|floatformat:2}}</td>
+					    {% if x.quote.USD.percent_change_1h > 0 %}
+						    <td> 
+						    	<span class='crypto-rates__percent crypto-rates__percent--up'>{{x.quote.USD.percent_change_1h|floatformat:2}}%</span>
+						    </td>
+						{% else %}
+						    <td>
+						    	<span class='crypto-rates__percent crypto-rates__percent--down'>{{x.quote.USD.percent_change_1h|floatformat:2}}%</span>
+							</td>
+					    {% endif %}
+						{% if x.quote.USD.percent_change_24h > 0 %}
+						    <td> 
+						    	<span class='crypto-rates__percent crypto-rates__percent--up'>{{x.quote.USD.percent_change_24h|floatformat:2}}%</span>
+						    </td>
+						{% else %}
+						    <td>
+						    	<span class='crypto-rates__percent crypto-rates__percent--down'>{{x.quote.USD.percent_change_24h|floatformat:2}}%</span>
+							</td>
+					    {% endif %}
 					    <td>{{amount}}</td>
 					    <td>$ {{x.quote.USD.price|mul:amount|floatformat:2}}</td>
 				    </tr>

@@ -4,6 +4,7 @@ from django.contrib.auth.forms import UserCreationForm, UserChangeForm, Password
 from django.contrib import messages
 from .forms import SignUpForm, EditProfileForm
 from django.contrib.auth.decorators import login_required
+from .models import Wallet
 
 def loginUser(request):
 	if request.method ==  "POST":
@@ -30,12 +31,14 @@ def registerUser(request):
 	if request.method == "POST":
 		form = SignUpForm(request.POST)
 		if form.is_valid():
-			form.save()
+			form.save()			
 			username = form.cleaned_data['username']
 			password = form.cleaned_data['password1']
 			user = authenticate(request, username=username, password=password)
 			login(request, user)
-			messages.success(request, ('You Have Successfully Registered' + user.id))
+			newWallet = Wallet(owner = request.user)
+			newWallet.save()
+			messages.success(request, ('You Have Successfully Registered'))
 			return redirect('home')
 	else:
 		form = SignUpForm()
