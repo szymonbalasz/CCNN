@@ -34,22 +34,21 @@
             <section class="section">
               <h3 class="section-title h2">Business News</h3>              
               <div class="row">
-              	{% for article in businessNews %}
+              	{% for article, info in businessNews.items %}
 	                <div class="col-md-6">
 	                  <article class="entry">
-	                    <a class="entry__meta-category">{{article.categories}}</a>
+	                    <a class="entry__meta-category">{{info.categories}}</a>
 	                    <div class="entry__img-holder">
-	                      <a href="{{article.url}}">
+	                      <a href="{{info.url}}">
 	                        <div class="thumb-container thumb-75">
-	                          <img data-src="img/blog/post_1.jpg" src="img/empty.png" class="entry__img lazyload" alt="" />
+	                          <img data-src="{{info.imageurl}}" src="{{info.imageurl}}" class="entry__img lazyload" alt="" />
 	                        </div>
 	                      </a>
 	                    </div>
-
 	                    <div class="entry__body">
 	                      <div class="entry__header">
 	                        <h2 class="entry__title entry__title--medium">
-	                          <a href="single-post.html">Bitcoin Fees: Possible Solutions and Scenarios</a>
+	                          <a href="{{info.url}}">{{info.title}}</a>
 	                        </h2>
 	                      </div>
 	                    </div>
@@ -59,164 +58,40 @@
               </div> 
             </section> <!-- end business news -->
 
-            <!-- Recent News -->
+            <!-- Portfolio News -->
             <section>
               <h3 class="section-title h2">Your Portfolio Coin News</h3>
               <div class="row">
-
-
-                <div class="col-lg-4 col-md-6">
-                  <article class="entry">
-                    <a href="categories.html" class="entry__meta-category">education</a>
-                    <div class="entry__img-holder">
-                      <a href="single-post.html">
-                        <div class="thumb-container thumb-60">
-                          <img data-src="img/blog/post_3.jpg" src="img/empty.png" class="entry__img lazyload" alt="" />
-                        </div>
-                      </a>
-                    </div>
-                    <div class="entry__body">
-                      <div class="entry__header">
-                        <h2 class="entry__title">
-                          <a href="single-post.html">How to Read a Blockchain Explorer</a>
-                        </h2>
-                      </div>
-                    </div>
-                  </article>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                  <article class="entry">
-                    <a href="categories.html" class="entry__meta-category">investment</a>
-                    <div class="entry__img-holder">
-                      <a href="single-post.html">
-                        <div class="thumb-container thumb-60">
-                          <img data-src="img/blog/post_4.jpg" src="img/empty.png" class="entry__img lazyload" alt="" />
-                        </div>
-                      </a>
-                    </div>
-                    <div class="entry__body">
-                      <div class="entry__header">
-                        <h2 class="entry__title">
-                          <a href="single-post.html">Growth Hacking Your ICO – 7 Steps to Successful Token Sale</a>
-                        </h2>
-                      </div>
-                    </div>
-                  </article>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                  <article class="entry">
-                    <a href="categories.html" class="entry__meta-category">ICO’s</a>
-                    <div class="entry__img-holder">
-                      <a href="single-post.html">
-                        <div class="thumb-container thumb-60">
-                          <img data-src="img/blog/post_5.jpg" src="img/empty.png" class="entry__img lazyload" alt="" />
-                        </div>
-                      </a>
-                    </div>
-                    <div class="entry__body">
-                      <div class="entry__header">
-                        <h2 class="entry__title">
-                          <a href="single-post.html">Litecoin Mining: Scrypt Algorithm for a Leading Coin</a>
-                        </h2>
-                      </div>
-                    </div>
-                  </article>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                  <article class="entry">
-                    <a href="categories.html" class="entry__meta-category">mining</a>
-                    <div class="entry__img-holder">
-                      <a href="single-post.html">
-                        <div class="thumb-container thumb-60">
-                          <img data-src="img/blog/post_6.jpg" src="img/empty.png" class="entry__img lazyload" alt="" />
-                        </div>
-                      </a>
-                    </div>
-                    <div class="entry__body">
-                      <div class="entry__header">
-                        <h2 class="entry__title">
-                          <a href="single-post.html">How to Buy Litecoin: Get your First Digital Silver</a>
-                        </h2>
-                      </div>
-                    </div>
-                  </article>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                  <article class="entry">
-                    <a href="categories.html" class="entry__meta-category">reviews</a>
-                    <div class="entry__img-holder">
-                      <a href="single-post.html">
-                        <div class="thumb-container thumb-60">
-                          <img data-src="img/blog/post_7.jpg" src="img/empty.png" class="entry__img lazyload" alt="" />
-                        </div>
-                      </a>
-                    </div>
-                    <div class="entry__body">
-                      <div class="entry__header">
-                        <h2 class="entry__title">
-                          <a href="single-post.html">ChronoBank: What's in the Near Future?</a>
-                        </h2>
-                      </div>
-                    </div>
-                  </article>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                  <article class="entry">
-                    <a href="categories.html" class="entry__meta-category">investment</a>
-                    <div class="entry__img-holder">
-                      <a href="single-post.html">
-                        <div class="thumb-container thumb-60">
-                          <img data-src="img/blog/post_8.jpg" src="img/empty.png" class="entry__img lazyload" alt="" />
-                        </div>
-                      </a>
-                    </div>
-                    <div class="entry__body">
-                      <div class="entry__header">
-                        <h2 class="entry__title">
-                          <a href="single-post.html">The Simple Way to Get on Board with Cryptocurrency</a>
-                        </h2>
-                      </div>
-                    </div>
-                  </article>
-                </div>
+              	{% for article, info in coinNews.items %}
+	                <div class="col-lg-4 col-md-6">
+	                  <article class="entry">
+	                    <a class="entry__meta-category">{{info.categories}}</a>
+	                    <div class="entry__img-holder">
+	                      <a href="{{info.url}}">
+	                        <div class="thumb-container thumb-60">
+	                          <img data-src="{{info.imageurl}}" src="{{info.imageurl}}" class="entry__img lazyload" alt="" />
+	                        </div>
+	                      </a>
+	                    </div>
+	                    <div class="entry__body">
+	                      <div class="entry__header">
+	                        <h2 class="entry__title">
+	                          <a href="{{info.url}}">{{info.title}}</a>
+	                        </h2>
+	                      </div>
+	                    </div>
+	                  </article>
+	                </div>
+                {% endfor %}
               </div> 
-            </section> <!-- end recent news -->
+            </section> <!-- end Portfolio news -->
 
           </div> <!-- end posts -->
 
           <!-- Sidebar -->
           <aside class="col-lg-4 sidebar sidebar--right">
 
-            <!-- Widget Crypto Rates -->
-            <div class="widget widget-crypto-rates">
-              <h4 class="widget-title">Cryptocurrency Prices</h4>
-              <div class="crypto-rates">
-              
-              		{% for coin, amount in portfolio.items %}
-	              		{% for x in price.data %}
-
-	                  	{% if coin == x.symbol %}
-						<div>
-							<img class="crypto-rates__img" src="https://raw.githubusercontent.com/atomiclabs/cryptocurrency-icons/master/32/color/{{x.symbol|lower}}.png">
-	                  		<span class='crypto-rates__name'>{{x.name}}</span>
-	                  		<span class='crypto-rates__price'>$ {{x.quote.USD.price|floatformat:2}}</span>
-	                  		{% if x.quote.USD.percent_change_1h > 0 %}
-		                  		<span class='crypto-rates__percent crypto-rates__percent--up'>{{x.quote.USD.percent_change_1h|floatformat:2}}%</span>
-		                  	{% else %}
-		                  		<span class='crypto-rates__percent crypto-rates__percent--down'>{{x.quote.USD.percent_change_1h|floatformat:2}}%</span>
-	                  		{% endif %}
-	              		</div>
-
-	                  	{% endif %}
-	                {% endfor %}
-	            {% endfor %}
-
-            	</div>  
-            </div>
-
             <!-- Widget Crypto Portfolio -->
-
-            <!-- Widget Crypto Rates -->
             <div class="widget widget-crypto-rates">
               <h4 class="widget-title">Cryptocurrency Prices</h4>
               <div class="crypto-rates">
@@ -242,6 +117,36 @@
 
             	</div>  
             </div>
+
+            <!-- End Widget Crypto Portfolio -->
+
+            <!-- Widget Top Crypto Rates -->
+            <div class="widget widget-crypto-rates">
+              <h4 class="widget-title">Cryptocurrency Prices</h4>
+              <div class="crypto-rates">
+              
+              		{% for coin, amount in portfolio.items %}
+	              		{% for x in price.data %}
+
+	                  	{% if coin == x.symbol %}
+						<div>
+							<img class="crypto-rates__img" src="https://raw.githubusercontent.com/atomiclabs/cryptocurrency-icons/master/32/color/{{x.symbol|lower}}.png">
+	                  		<span class='crypto-rates__name'>{{x.name}}</span>
+	                  		<span class='crypto-rates__price'>$ {{x.quote.USD.price|floatformat:2}}</span>
+	                  		{% if x.quote.USD.percent_change_1h > 0 %}
+		                  		<span class='crypto-rates__percent crypto-rates__percent--up'>{{x.quote.USD.percent_change_1h|floatformat:2}}%</span>
+		                  	{% else %}
+		                  		<span class='crypto-rates__percent crypto-rates__percent--down'>{{x.quote.USD.percent_change_1h|floatformat:2}}%</span>
+	                  		{% endif %}
+	              		</div>
+
+	                  	{% endif %}
+	                {% endfor %}
+	            {% endfor %}
+
+            	</div>  
+            </div>
+            <!-- End Widget Top Crypto Rates -->
 
 
           </aside> <!-- end sidebar -->
@@ -255,153 +160,91 @@
       <div class="container">
         <h3 class="section-title h2">News by Categories</h3>
         <div class="row">
-          <div class="col-lg-3 col-md-6">
-            <article class="entry">
-              <a href="categories.html" class="entry__meta-category">education</a>
+          <div class="col-lg-3 col-md-6">          	
+              <a class="entry__meta-category">MINING</a>
+              {% for article, info in miningNews.items %}
+              <article class="entry">
               <div class="entry__img-holder">
-                <a href="single-post.html">
+                <a href="{{info.url}}">
                   <div class="thumb-container thumb-60">
-                    <img data-src="img/blog/post_9.jpg" src="img/empty.png" class="entry__img lazyload" alt="" />
+                    <img data-src="{{info.imageurl}}" src="{{info.imageurl}}" class="entry__img lazyload" alt="" />
                   </div>
                 </a>
               </div>
               <div class="entry__body">
                 <div class="entry__header">
                   <h2 class="entry__title">
-                    <a href="single-post.html">Best Bitcoin Exchanges Reviewed &amp; Compared</a>
+                    <a href="{{info.url}}">{{info.title}}</a>
                   </h2>
                 </div>
               </div>
             </article>
-            <article class="entry">
-              <div class="entry__body">
-                <div class="entry__header">
-                  <h2 class="entry__title">
-                    <a href="single-post.html">ChronoBank: What's in the Near Future?</a>
-                  </h2>
-                </div>
-              </div>
-            </article>
-            <article class="entry">
-              <div class="entry__body">
-                <div class="entry__header">
-                  <h2 class="entry__title">
-                    <a href="single-post.html">Cryptocurrency Markets: Weekly Trading Overview (06-13 October)</a>
-                  </h2>
-                </div>
-              </div>
-            </article>
+            {% endfor %}
           </div>
           <div class="col-lg-3 col-md-6">
-            <article class="entry">
-              <a href="categories.html" class="entry__meta-category">investment</a>
+              <a class="entry__meta-category">REGULATION</a>
+				{% for article, info in regulationNews.items %}
+              <article class="entry">
               <div class="entry__img-holder">
-                <a href="single-post.html">
+                <a href="{{info.url}}">
                   <div class="thumb-container thumb-60">
-                    <img data-src="img/blog/post_10.jpg" src="img/empty.png" class="entry__img lazyload" alt="" />
+                    <img data-src="{{info.imageurl}}" src="{{info.imageurl}}" class="entry__img lazyload" alt="" />
                   </div>
                 </a>
               </div>
               <div class="entry__body">
                 <div class="entry__header">
                   <h2 class="entry__title">
-                    <a href="single-post.html">MyEtherWallet Opens the Ethereum Universe for You</a>
+                    <a href="{{info.url}}">{{info.title}}</a>
                   </h2>
                 </div>
               </div>
             </article>
-            <article class="entry">
-              <div class="entry__body">
-                <div class="entry__header">
-                  <h2 class="entry__title">
-                    <a href="single-post.html">How to Buy Litecoin: Get your First Digital Silver</a>
-                  </h2>
-                </div>
-              </div>
-            </article>
-            <article class="entry">
-              <div class="entry__body">
-                <div class="entry__header">
-                  <h2 class="entry__title">
-                    <a href="single-post.html">Growth Hacking Your ICO – 7 Steps to Successful Token Sale</a>
-                  </h2>
-                </div>
-              </div>
-            </article>
+            {% endfor %}
           </div>
           <div class="col-lg-3 col-md-6">
-            <article class="entry">
-              <a href="categories.html" class="entry__meta-category">education</a>
+            
+              <a class="entry__meta-category">MARKET</a>
+              {% for article, info in marketNews.items %}
+              <article class="entry">
               <div class="entry__img-holder">
-                <a href="single-post.html">
+                <a href="{{info.url}}">
                   <div class="thumb-container thumb-60">
-                    <img data-src="img/blog/post_11.jpg" src="img/empty.png" class="entry__img lazyload" alt="" />
+                    <img data-src="{{info.imageurl}}" src="{{info.imageurl}}" class="entry__img lazyload" alt="" />
                   </div>
                 </a>
               </div>
               <div class="entry__body">
                 <div class="entry__header">
                   <h2 class="entry__title">
-                    <a href="single-post.html">LocalBitcoins: Another Measure of Bitcoin's Popularity</a>
+                    <a href="{{info.url}}">{{info.title}}</a>
                   </h2>
                 </div>
               </div>
             </article>
-            <article class="entry">
-              <div class="entry__body">
-                <div class="entry__header">
-                  <h2 class="entry__title">
-                    <a href="single-post.html">How to Read a Blockchain Explorer</a>
-                  </h2>
-                </div>
-              </div>
-            </article>
-            <article class="entry">
-              <div class="entry__body">
-                <div class="entry__header">
-                  <h2 class="entry__title">
-                    <a href="single-post.html">Navigating The ICO Gold Rush – 4 Critical ICO Evaluation Factors</a>
-                  </h2>
-                </div>
-              </div>
-            </article>
+            {% endfor %}
           </div>
           <div class="col-lg-3 col-md-6">
-            <article class="entry">
-              <a href="categories.html" class="entry__meta-category">ICO's</a>
+           
+              <a class="entry__meta-category">ICO's</a>
+              {% for article, info in ICONews.items %}
+              <article class="entry">
               <div class="entry__img-holder">
-                <a href="single-post.html">
+                <a href="{{info.url}}">
                   <div class="thumb-container thumb-60">
-                    <img data-src="img/blog/post_12.jpg" src="img/empty.png" class="entry__img lazyload" alt="" />
+                    <img data-src="{{info.imageurl}}" src="{{info.imageurl}}" class="entry__img lazyload" alt="" />
                   </div>
                 </a>
               </div>
               <div class="entry__body">
                 <div class="entry__header">
                   <h2 class="entry__title">
-                    <a href="single-post.html">Top VCs Back Record Breaking Filecoin ICO</a>
+                    <a href="{{info.url}}">{{info.title}}</a>
                   </h2>
                 </div>
               </div>
             </article>
-            <article class="entry">
-              <div class="entry__body">
-                <div class="entry__header">
-                  <h2 class="entry__title">
-                    <a href="single-post.html">Litecoin Mining: Scrypt Algorithm for a Leading Coin</a>
-                  </h2>
-                </div>
-              </div>
-            </article>
-            <article class="entry">
-              <div class="entry__body">
-                <div class="entry__header">
-                  <h2 class="entry__title">
-                    <a href="single-post.html">ChronoBank: Reaching the Community and Markets</a>
-                  </h2>
-                </div>
-              </div>
-            </article>
+            {% endfor %}
           </div>
         </div>
       </div>
