@@ -1,0 +1,104 @@
+/*-------------------------------------------------------*/
+/* Typography
+/*-------------------------------------------------------*/
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: $heading-font;
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: $heading-color;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  font-weight: 500;
+}
+
+h1, .h1 { font-size: 2.8125rem; font-weight: 300; }
+h2, .h2 { font-size: 2.125rem; font-weight: 300; }
+h3, .h3 { font-size: 1.75rem; font-weight: 300; }
+h4, .h4 { font-size: 1.5rem; }
+h5, .h5 { font-size: 1.25rem; }
+h6, .h6 { font-size: 1rem; }
+
+@include bp-sm-down {
+  h1, .h1 { font-size: 1.8rem; }
+  h2, .h2 { font-size: 1.7rem; }
+  h3, .h3 { font-size: 1.5rem; }
+}
+
+h1 > a, h2 > a, h3 > a, h4 > a, h5 > a, h6 > a {
+  color: inherit;
+}
+
+p {
+  font-size: 15px;
+  color: $text-color;
+  font-weight: normal;
+  line-height: 26px;
+  margin: 0 0 10px;
+}
+
+address {
+  font-style: normal;
+}
+
+.lead {
+  font-size: 18px;
+  line-height: 30px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
+}
+
+@include bp-xl-down { .text-lg-center {text-align: center}; }
+@include bp-lg-down { .text-md-center {text-align: center}; }
+@include bp-md-down { .text-sm-center {text-align: center}; }
+@include bp-sm-down { .text-xs-center {text-align: center}; }
+
+blockquote {
+  padding: 40px;
+  background-color: $bg-light;
+  text-align: center;
+  margin-bottom: 40px;
+  margin-top: 40px;
+
+  p {
+    font-size: 18px;
+    line-height: 28px;
+    margin-bottom: 5px !important; 
+    position: relative;
+    color: $heading-color;
+    font-family: $heading-font;
+  }
+
+  cite {
+    font-size: 15px;
+    font-weight: 400;
+    color: $meta-color;
+  }
+}
+
+hr {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 0;
+  border-top: 1px solid $border-color;
+}
+
+.section-title {
+  margin-bottom: 36px;
+}

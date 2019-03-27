@@ -1,0 +1,60 @@
+/*-------------------------------------------------------*/
+/* Footer
+/*-------------------------------------------------------*/
+.footer {
+
+  .widget-title {
+    font-size: 0.875rem;
+    font-weight: 400;
+    margin-bottom: 34px;
+  }
+
+  a:not(.social) {
+    color: $text-color;
+  }
+
+  a:not(.social):hover {
+    color: $heading-color;
+    text-decoration: underline;
+  }
+
+  &__widgets {
+    padding: 46px 0 70px;
+    border-bottom: 1px solid $border-color;
+    border-top: 1px solid $border-color;
+
+    @include bp-lg-down {
+      & > .row > div:not(:last-child) {
+        margin-bottom: 50px;
+      }
+    }
+  }  
+}
+
+
+/* Donate
+-------------------------------------------------------*/
+.donate {
+  &__list {
+    line-height: 1.9;
+  }
+
+  &__item {
+    word-break: break-word;
+  }
+
+  &__label {
+    color: $heading-color;
+  }
+}
+
+
+/* Bottom Footer
+-------------------------------------------------------*/
+.footer__bottom {
+  padding: 21px 0;
+}
+
+.copyright {
+  font-size: 0.8125rem;
+}
