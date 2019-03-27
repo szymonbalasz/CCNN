@@ -40,6 +40,17 @@ def cNews():
 
 	return news
 
+def topCoins(price):
+	topCoins = {}
+	count = 1
+	while count < 11:
+		for prices in price['data']:
+			if prices['cmc_rank'] == count:
+				topCoins[count] = prices['symbol']
+		count += 1
+	return topCoins
+
+
 def businessNews(allNews):
 	news = {}
 	count = 0
@@ -121,4 +132,3 @@ def ICONews(allNews, exclude):
 				if count == 3:
 					return news
 	return news
-

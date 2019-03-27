@@ -91,15 +91,50 @@
           <!-- Sidebar -->
           <aside class="col-lg-4 sidebar sidebar--right">
 
-            <!-- Widget Crypto Portfolio -->
+            <!-- Crypto Portfolio -->
             <div class="widget widget-crypto-rates">
-              <h4 class="widget-title">Cryptocurrency Prices</h4>
+              <h4 class="widget-title">Your Coin Prices</h4>
               <div class="crypto-rates">
               
+              		{% if user.is_authenticated %}
               		{% for coin, amount in portfolio.items %}
 	              		{% for x in price.data %}
 
 	                  	{% if coin == x.symbol %}
+						<div>
+							<img class="crypto-rates__img" src="https://raw.githubusercontent.com/atomiclabs/cryptocurrency-icons/master/32/color/{{x.symbol|lower}}.png">
+	                  		<span class='crypto-rates__name'>{{x.name}}</span>
+	                  		<span class='crypto-rates__price'>$ {{x.quote.USD.price|floatformat:2}}</span>
+	                  		{% if x.quote.USD.percent_change_1h > 0 %}
+		                  		<span class='crypto-rates__percent crypto-rates__percent--up'>{{x.quote.USD.percent_change_1h|floatformat:2}}%</span>
+		                  	{% else %}
+		                  		<span class='crypto-rates__percent crypto-rates__percent--down'>{{x.quote.USD.percent_change_1h|floatformat:2}}%</span>
+	                  		{% endif %}
+	              		</div>
+
+	                  	{% endif %}
+	                	{% endfor %}
+	            	{% endfor %}
+	            	{% else %}
+	            		<div>
+	            			<span>Please <a href="{% url 'login' %}">Login</a> to View</span>
+	            		</div>
+	            	{% endif %}
+
+            	</div>  
+            </div>
+
+            <!-- End Crypto Portfolio -->
+
+            <!-- Top Crypto Rates -->
+            <div class="widget widget-crypto-rates">
+              <h4 class="widget-title">Top Ten Coins</h4>
+              <div class="crypto-rates">
+              
+              		{% for rank, symbol in topCoins.items %}
+	              		{% for x in price.data %}
+
+	                  	{% if symbol == x.symbol %}
 						<div>
 							<img class="crypto-rates__img" src="https://raw.githubusercontent.com/atomiclabs/cryptocurrency-icons/master/32/color/{{x.symbol|lower}}.png">
 	                  		<span class='crypto-rates__name'>{{x.name}}</span>
@@ -117,36 +152,7 @@
 
             	</div>  
             </div>
-
-            <!-- End Widget Crypto Portfolio -->
-
-            <!-- Widget Top Crypto Rates -->
-            <div class="widget widget-crypto-rates">
-              <h4 class="widget-title">Cryptocurrency Prices</h4>
-              <div class="crypto-rates">
-              
-              		{% for coin, amount in portfolio.items %}
-	              		{% for x in price.data %}
-
-	                  	{% if coin == x.symbol %}
-						<div>
-							<img class="crypto-rates__img" src="https://raw.githubusercontent.com/atomiclabs/cryptocurrency-icons/master/32/color/{{x.symbol|lower}}.png">
-	                  		<span class='crypto-rates__name'>{{x.name}}</span>
-	                  		<span class='crypto-rates__price'>$ {{x.quote.USD.price|floatformat:2}}</span>
-	                  		{% if x.quote.USD.percent_change_1h > 0 %}
-		                  		<span class='crypto-rates__percent crypto-rates__percent--up'>{{x.quote.USD.percent_change_1h|floatformat:2}}%</span>
-		                  	{% else %}
-		                  		<span class='crypto-rates__percent crypto-rates__percent--down'>{{x.quote.USD.percent_change_1h|floatformat:2}}%</span>
-	                  		{% endif %}
-	              		</div>
-
-	                  	{% endif %}
-	                {% endfor %}
-	            {% endfor %}
-
-            	</div>  
-            </div>
-            <!-- End Widget Top Crypto Rates -->
+            <!-- End Top Crypto Rates -->
 
 
           </aside> <!-- end sidebar -->

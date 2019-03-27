@@ -11,6 +11,7 @@ from django.contrib.auth.decorators import login_required
 
 def home(request):
 	price = cryptoAPI.cPrice()
+	topCoins = cryptoAPI.topCoins(price)
 	news = cryptoAPI.cNews()
 	if request.user.is_authenticated:
 		portfolio = request.user.wallet.getCoins()
@@ -44,7 +45,8 @@ def home(request):
 		'miningNews' : miningNews,
 		'regulationNews' : regulationNews,
 		'marketNews' : marketNews,
-		'ICONews' : ICONews
+		'ICONews' : ICONews,
+		'topCoins' : topCoins
 	}
 
 	return render(request, 'home.html', display)
