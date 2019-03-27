@@ -23,7 +23,8 @@ def addCoin(request):
 	if request.method == 'POST':
 		form = AddCoinForm(request.POST or None)
 		if form.is_valid():
-			
+			data = form.cleaned_data
+			request.user.wallet.addCoins(data['symbol'], data['amount'])
 			messages.success(request, "Coins Added") 
 			return redirect('home')
 		else:

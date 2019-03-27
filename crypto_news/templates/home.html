@@ -5,19 +5,7 @@
 {% block body %}
 {% load static %}
 
-{% if messages %}
-	{% for message in messages %}
-		<div class="alert alert-warning alert-dismissable" role="alert">
-  			{{ message }}
-  		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    		<span aria-hidden="true">&times;</span>
-  		</button>
-		</div>
 
-		
-	{% endfor %}
-
-{% endif %}
 
     <!-- Content -->      
     <section class="section-wrap main-content">
