@@ -40,5 +40,85 @@ def cNews():
 
 	return news
 
-def cNewsRelevant(tags):
-	return tags
+def businessNews(allNews):
+	news = {}
+	count = 0
+	for article in allNews['Data']:
+		if 'Business' in article['categories']:
+			news[article['id']] = article
+			count += 1
+			if count == 2:
+				return news
+	return news
+
+def coinNews(portfolio, allNews, exclude):
+	news = {}
+	excludedNews = exclude
+	count = 0
+	for symbol in portfolio:
+		for article in allNews['Data']:
+			if symbol in article['categories']:
+					if article['id'] not in excludedNews:
+						news[article['id']] = article
+						excludedNews.update(news)
+						count += 1
+						if count == 9:
+							return news
+	return news
+
+def miningNews(allNews, exclude):
+	news = {}
+	excludedNews = exclude
+	count = 0
+	for article in allNews['Data']:
+		if 'Mining' in article['categories']:
+			if article['id'] not in excludedNews:
+				news[article['id']] = article
+				excludedNews.update(news)
+				count += 1
+				if count == 3:
+					return news
+	return news
+
+def regulationNews(allNews, exclude):
+	news = {}
+	excludedNews = exclude
+	count = 0
+	for article in allNews['Data']:
+		if 'Regulation' in article['categories']:
+			if article['id'] not in excludedNews:
+				news[article['id']] = article
+				excludedNews.update(news)
+				count += 1
+				if count == 3:
+					return news
+	return news
+
+def marketNews(allNews, exclude):
+	news = {}
+	excludedNews = exclude
+	count = 0
+	for article in allNews['Data']:
+		if 'Market' in article['categories']:
+			if article['id'] not in excludedNews:
+				news[article['id']] = article
+				excludedNews.update(news)
+				count += 1
+				if count == 3:
+					return news
+	return news
+
+def ICONews(allNews, exclude):
+	news = {}
+	excludedNews = exclude
+	count = 0
+	for article in allNews['Data']:
+		if 'ICO' in article['categories']:
+			if article['id'] not in excludedNews:
+				news[article['id']] = article
+				excludedNews.update(news)
+				count += 1
+				if count == 3:
+					return news
+	return news
+

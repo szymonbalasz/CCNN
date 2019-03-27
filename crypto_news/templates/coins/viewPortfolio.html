@@ -24,7 +24,7 @@
 		  <tbody>
 
 		 	{% for coin, amount in portfolio.items %}
-		 		{% for x in price %}
+		 		{% for x in price.data %}
 			 		{% if coin == x.symbol %}
 				    <tr>
 					    <td>

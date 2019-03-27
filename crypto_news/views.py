@@ -12,6 +12,22 @@ from django.contrib.auth.decorators import login_required
 def home(request):
 	price = cryptoAPI.cPrice()
 	news = cryptoAPI.cNews()
+	if request.user.is_authenticated:
+		portfolio = request.user.wallet.getCoins()
+	else:
+		portfolio = {}
+	excludedNews = {}
+	businessNews = cryptoAPI.businessNews(news)
+	excludedNews.update(businessNews)
+	coinNews = cryptoAPI.coinNews(portfolio, news, excludedNews)
+	excludedNews.update(coinNews)
+	miningNews = cryptoAPI.miningNews(news, excludedNews)
+	excludedNews.update(miningNews)
+	regulationNews = cryptoAPI.regulationNews(news, excludedNews)
+	excludedNews.update(regulationNews)
+	marketNews = cryptoAPI.marketNews(news, excludedNews)
+	excludedNews.update(marketNews)
+	ICONews = cryptoAPI.ICONews(news, excludedNews)
 
 	if LatestAPI.objects.get(pk=1).errorPrices:
 		messages.success(request, "API Error. Using stored crypto price data from: " + LatestAPI.objects.get(pk=1).getLastUpdate())
@@ -19,7 +35,19 @@ def home(request):
 	if LatestAPI.objects.get(pk=1).errorNews:
 		messages.success(request, "API Error. Using stored crypto news data")
 
-	return render(request, 'home.html', {'news' : news, 'price' : price})
+	display = {
+		'news' : news,
+		'price' : price,
+		'portfolio' : portfolio,
+		'businessNews' : businessNews,
+		'coinNews' : coinNews,
+		'miningNews' : miningNews,
+		'regulationNews' : regulationNews,
+		'marketNews' : marketNews,
+		'ICONews' : ICONews
+	}
+
+	return render(request, 'home.html', display)
 
 def about(request):
 	return render(request, 'about.html', {})
@@ -43,5 +71,7 @@ def addCoin(request):
 @login_required
 def viewPortfolio(request):
 	price = cryptoAPI.cPrice()
+	if LatestAPI.objects.get(pk=1).errorPrices:
+		messages.success(request, "API Error. Using stored crypto price data from: " + LatestAPI.objects.get(pk=1).getLastUpdate())
 	portfolio = request.user.wallet.getCoins()
 	return render(request, 'coins/viewPortfolio.html', {'price' : price, 'portfolio' : portfolio})

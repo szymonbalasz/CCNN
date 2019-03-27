@@ -30,56 +30,38 @@
               </div>
             </article> <!-- end featured post -->
 
-            <!-- Hot News -->
+            <!-- Business News -->
             <section class="section">
-              <h3 class="section-title h2">Hot News</h3>
+              <h3 class="section-title h2">Business News</h3>              
               <div class="row">
-                <div class="col-md-6">
-                  <article class="entry">
-                    <a href="categories.html" class="entry__meta-category">currency market</a>
-                    <div class="entry__img-holder">
-                      <a href="single-post.html">
-                        <div class="thumb-container thumb-75">
-                          <img data-src="img/blog/post_1.jpg" src="img/empty.png" class="entry__img lazyload" alt="" />
-                        </div>
-                      </a>
-                    </div>
+              	{% for article in businessNews %}
+	                <div class="col-md-6">
+	                  <article class="entry">
+	                    <a class="entry__meta-category">{{article.categories}}</a>
+	                    <div class="entry__img-holder">
+	                      <a href="{{article.url}}">
+	                        <div class="thumb-container thumb-75">
+	                          <img data-src="img/blog/post_1.jpg" src="img/empty.png" class="entry__img lazyload" alt="" />
+	                        </div>
+	                      </a>
+	                    </div>
 
-                    <div class="entry__body">
-                      <div class="entry__header">
-                        <h2 class="entry__title entry__title--medium">
-                          <a href="single-post.html">Bitcoin Fees: Possible Solutions and Scenarios</a>
-                        </h2>
-                      </div>
-                    </div>
-                  </article>
-                </div>
-                <div class="col-md-6">
-                  <article class="entry">
-                    <a href="categories.html" class="entry__meta-category">education</a>
-                    <div class="entry__img-holder">
-                      <a href="single-post.html">
-                        <div class="thumb-container thumb-75">
-                          <img data-src="img/blog/post_2.jpg" src="img/empty.png" class="entry__img lazyload" alt="" />
-                        </div>
-                      </a>
-                    </div>
-
-                    <div class="entry__body">
-                      <div class="entry__header">                        
-                        <h2 class="entry__title entry__title--medium">
-                          <a href="single-post.html">Navigating The ICO Gold Rush – 4 Critical ICO Evaluation Factors</a>
-                        </h2>
-                      </div>
-                    </div>
-                  </article>
-                </div>
+	                    <div class="entry__body">
+	                      <div class="entry__header">
+	                        <h2 class="entry__title entry__title--medium">
+	                          <a href="single-post.html">Bitcoin Fees: Possible Solutions and Scenarios</a>
+	                        </h2>
+	                      </div>
+	                    </div>
+	                  </article>
+	                </div>
+            	{% endfor %}
               </div> 
-            </section> <!-- end hot news -->
+            </section> <!-- end business news -->
 
             <!-- Recent News -->
             <section>
-              <h3 class="section-title h2">Recent News</h3>
+              <h3 class="section-title h2">Your Portfolio Coin News</h3>
               <div class="row">
 
 
@@ -210,98 +192,63 @@
               <h4 class="widget-title">Cryptocurrency Prices</h4>
               <div class="crypto-rates">
               
-              		{% for x in price.data %}
+              		{% for coin, amount in portfolio.items %}
+	              		{% for x in price.data %}
 
-                  	{% if x.symbol ==  "BTC" %}
-					<div>
-						<img class="crypto-rates__img" src="https://raw.githubusercontent.com/atomiclabs/cryptocurrency-icons/master/32/color/{{x.symbol|lower}}.png">
-                  		<span class='crypto-rates__name'>{{x.name}}</span>
-                  		<span class='crypto-rates__price'>$ {{x.quote.USD.price|floatformat:2}}</span>
-                  		{% if x.quote.USD.percent_change_1h > 0 %}
-	                  		<span class='crypto-rates__percent crypto-rates__percent--up'>{{x.quote.USD.percent_change_1h|floatformat:2}}%</span>
-	                  	{% else %}
-	                  		<span class='crypto-rates__percent crypto-rates__percent--down'>{{x.quote.USD.percent_change_1h|floatformat:2}}%</span>
-                  		{% endif %}
-              		</div>
+	                  	{% if coin == x.symbol %}
+						<div>
+							<img class="crypto-rates__img" src="https://raw.githubusercontent.com/atomiclabs/cryptocurrency-icons/master/32/color/{{x.symbol|lower}}.png">
+	                  		<span class='crypto-rates__name'>{{x.name}}</span>
+	                  		<span class='crypto-rates__price'>$ {{x.quote.USD.price|floatformat:2}}</span>
+	                  		{% if x.quote.USD.percent_change_1h > 0 %}
+		                  		<span class='crypto-rates__percent crypto-rates__percent--up'>{{x.quote.USD.percent_change_1h|floatformat:2}}%</span>
+		                  	{% else %}
+		                  		<span class='crypto-rates__percent crypto-rates__percent--down'>{{x.quote.USD.percent_change_1h|floatformat:2}}%</span>
+	                  		{% endif %}
+	              		</div>
 
-                  	{% endif %}
-                  {% endfor %}
+	                  	{% endif %}
+	                {% endfor %}
+	            {% endfor %}
 
             	</div>  
             </div>
 
             <!-- Widget Crypto Portfolio -->
 
+            <!-- Widget Crypto Rates -->
+            <div class="widget widget-crypto-rates">
+              <h4 class="widget-title">Cryptocurrency Prices</h4>
+              <div class="crypto-rates">
+              
+              		{% for coin, amount in portfolio.items %}
+	              		{% for x in price.data %}
 
-            <!-- Widget Featured ICO's -->
-            <div class="widget widget-featured-icos">
-              <h4 class="widget-title">Featured ICO's</h4>
-              <ul class="widget-featured-icos__list">
-                <li class="widget-featured-icos__item">
-                  <a href="#" class="widget-featured-icos__url">
-                    <img src="img/blog/ico_1.png" alt="">
-                    <span class="widget-featured-icos__title">ClearCoin</span>
-                    <span class="widget-featured-icos__launch">Starts in:</span>
-                    <span class="widget-featured-icos__time">66 days</span>
-                  </a>
-                </li>
-                <li class="widget-featured-icos__item">
-                  <a href="#" class="widget-featured-icos__url">
-                    <img src="img/blog/ico_2.png" alt="">
-                    <span class="widget-featured-icos__title">Monetha</span>
-                    <span class="widget-featured-icos__launch">Starts in:</span>
-                    <span class="widget-featured-icos__time">12 days</span>
-                  </a>
-                </li>
-                <li class="widget-featured-icos__item">
-                  <a href="#" class="widget-featured-icos__url">
-                    <img src="img/blog/ico_3.png" alt="">
-                    <span class="widget-featured-icos__title">HelloGold</span>
-                    <span class="widget-featured-icos__launch">Starts in:</span>
-                    <span class="widget-featured-icos__time">3 days</span>
-                  </a>
-                </li>
-              </ul>
-            </div> <!-- end widget featured icos -->
+	                  	{% if coin == x.symbol %}
+						<div>
+							<img class="crypto-rates__img" src="https://raw.githubusercontent.com/atomiclabs/cryptocurrency-icons/master/32/color/{{x.symbol|lower}}.png">
+	                  		<span class='crypto-rates__name'>{{x.name}}</span>
+	                  		<span class='crypto-rates__price'>$ {{x.quote.USD.price|floatformat:2}}</span>
+	                  		{% if x.quote.USD.percent_change_1h > 0 %}
+		                  		<span class='crypto-rates__percent crypto-rates__percent--up'>{{x.quote.USD.percent_change_1h|floatformat:2}}%</span>
+		                  	{% else %}
+		                  		<span class='crypto-rates__percent crypto-rates__percent--down'>{{x.quote.USD.percent_change_1h|floatformat:2}}%</span>
+	                  		{% endif %}
+	              		</div>
 
-            <!-- Widget Socials -->
-            <div class="widget widget-socials">
-              <div class="socials justify-content-center">
-                <a class="social social-facebook" href="#" title="facebook" target="_blank" aria-label="facebook">
-                  <i class="ui-facebook"></i>
-                </a><!--
-                --><a class="social social-twitter" href="#" title="twitter" target="_blank" aria-label="twitter">
-                  <i class="ui-twitter"></i>
-                </a><!--
-                --><a class="social social-google-plus" href="#" title="google" target="_blank" aria-label="google">
-                  <i class="ui-google"></i>
-                </a><!--
-                --><a class="social social-instagram" href="#" title="instagram" target="_blank" aria-label="instagram">
-                  <i class="ui-instagram"></i>
-                </a><!--
-                --><a class="social social-youtube" href="#" title="youtube" target="_blank" aria-label="youtube">
-                  <i class="ui-youtube"></i>
-                </a><!--
-                --><a class="social social-rss" href="#" title="rss" target="_blank" aria-label="rss">
-                  <i class="ui-rss"></i>
-                </a>
-              </div>
-            </div> <!-- end widget socials -->
+	                  	{% endif %}
+	                {% endfor %}
+	            {% endfor %}
+
+            	</div>  
+            </div>
+
 
           </aside> <!-- end sidebar -->
 
         </div> <!-- end row -->
       </div> <!-- end container -->
     </section> <!-- end content -->
-
-    <!-- Ad -->
-    <section class="section-wrap">
-      <div class="container text-center">
-        <a href="#">
-          <img src="img/blog/placeholder_leaderboard.jpg" alt="">
-        </a>
-      </div>      
-    </section>
 
     <!-- News by categories -->
     <section class="section-wrap news-by-categories pt-20">
