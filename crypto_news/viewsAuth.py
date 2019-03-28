@@ -7,6 +7,9 @@ from django.contrib.auth.decorators import login_required
 from .models import Wallet
 
 def loginUser(request):
+	if request.user.is_authenticated:
+		messages.success(request, ('Already Logged In'))
+		return redirect('home')
 	if request.method ==  "POST":
 		username = request.POST['username']
 		password = request.POST['password']
@@ -28,6 +31,9 @@ def logoutUser(request):
 	return redirect('home')
 
 def registerUser(request):
+	if request.user.is_authenticated:
+		messages.success(request, ('Already Logged In'))
+		return redirect('home')
 	if request.method == "POST":
 		form = SignUpForm(request.POST)
 		if form.is_valid():
