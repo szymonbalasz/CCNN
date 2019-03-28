@@ -20,7 +20,6 @@
 			    <input type="number" step="any" class="form-control" value={{amount}} name="amount" required="" label="Enter New Value">
 			  </div>
 			  <button type="submit" class="btn btn-secondary">Edit</button>
-			  <!--<a class="btn btn-danger" role="button" href="{% url 'deleteCoin' symbol %}">Delete</a>-->
 			</form>
 			<form method="POST">
 				{%csrf_token%}
