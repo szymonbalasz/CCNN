@@ -555,7 +555,6 @@ select {
 	appearance: none;
 	cursor: pointer;
 	padding-left: 12px;
-	background-image: url(../img/dropdown.png);
 	background-repeat: no-repeat;
 	background-position: 100% 50%; }
 
