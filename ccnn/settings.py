@@ -16,13 +16,13 @@ ALLOWED_HOSTS = ['.herokuapp.com']
 # Application definition
 
 INSTALLED_APPS = [
+    'crypto_news',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'crypto_news',
     'mathfilters',
 ]
 
@@ -94,6 +94,7 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+TIME_ZONE = 'Africa/Johannesburg'
 
 
 

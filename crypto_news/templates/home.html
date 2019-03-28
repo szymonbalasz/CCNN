@@ -15,10 +15,11 @@
           <!-- Posts -->
           <div class="col-lg-8 blog__content mb-30">
 
-            <!-- Featured Post -->
+            <!-- About CCNN -->
+            <br/>
             <article class="entry">
               <div class="thumb-bg-holder thumb-container thumb-65">
-                <img data-src="img/blog/featured_post_img.jpg" src="img/empty.png" class="lazyload" alt="">
+                <img data-src="{% static 'img/aboutCCNN.jpg' %}" src="{% static 'img/aboutCCNN.jpg' %}" class="lazyload" alt="">
                 <a href="single-post.html" class="thumb-url"></a>
                 <div class="bottom-gradient"></div>
               </div>
@@ -28,7 +29,7 @@
                   <a href="{% url 'about' %}">About CCNN</a>
                 </h1>
               </div>
-            </article> <!-- end featured post -->
+            </article> <!-- end About CCNN -->
 
             <!-- Business News -->
             <section class="section">
@@ -128,7 +129,7 @@
 
             <!-- Top Crypto Rates -->
             <div class="widget widget-crypto-rates">
-              <h4 class="widget-title">Top Ten Coins</h4>
+              <h4 class="widget-title">Top Rated Coins</h4>
               <div class="crypto-rates">
               
               		{% for rank, symbol in topCoins.items %}
@@ -188,7 +189,7 @@
             {% endfor %}
           </div>
           <div class="col-lg-3 col-md-6">
-              <a class="entry__meta-category">REGULATION</a>
+              <a class="entry__meta-category">REGULATION AND TRADING</a>
 				{% for article, info in regulationNews.items %}
               <article class="entry">
               <div class="entry__img-holder">

@@ -18,9 +18,6 @@
 
     <!-- Favicons -->
     <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}">
-    <link rel="apple-touch-icon" href="{% static 'img/apple-touch-icon-72x72.png' %}">
-    <link rel="apple-touch-icon" sizes="72x72" href="{% static 'img/apple-touch-icon-72x72.png' %}">
-    <link rel="apple-touch-icon" sizes="114x114" href="{% static 'img/apple-touch-icon-114x114.png' %}">
 
     <!-- Lazyload -->
     <script src="{% static 'js/lazysizes.min.js' %}"></script>
@@ -31,6 +28,7 @@
     <title>{% block title %}{% endblock %}</title>
   </head>
   <body>
+    <br/>
     {% load static %}
 
   <!-- Bg Overlay -->
@@ -50,41 +48,36 @@
     <nav class="sidenav__menu-container">
       <ul class="sidenav__menu" role="menubar">
         <li class="active">
-          <a class="sidenav__menu-link">Home</a>
+          <a href="{% url 'home' %}"class="sidenav__menu-link">Home</a>
         </li>
-
+        <li>
+          <a href="{% url 'about' %}"class="sidenav__menu-link">About</a>
+        </li>
         {%if user.is_authenticated%}
-
-        <li>
-          <a href="#" class="sidenav__menu-link">Posts</a>
-          <button class="sidenav__menu-toggle" aria-haspopup="true" aria-label="Open dropdown"><i class="ui-arrow-down"></i></button>
-          <ul class="sidenav__menu-dropdown">
-            <li><a href="single-post-gallery.html" class="sidenav__menu-link">Gallery Post</a></li>
-            <li><a href="single-post.html" class="sidenav__menu-link">Video Post</a></li>
-            <li><a href="single-post.html" class="sidenav__menu-link">Audio Post</a></li>
-          </ul>
-        </li>
-
-
-        <li>
-          <a class="sidenav__menu-link">Account</a>
-          <button class="sidenav__menu-toggle" aria-haspopup="true" aria-label="Open dropdown"><i class="ui-arrow-down"></i></button>
-          <ul class="sidenav__menu-dropdown">
-            <li><a href="{%url 'editProfile'%}" class="sidenav__menu-link">Edit Profile</a></li>
-            <li><a href="{%url 'changePassword'%}" class="sidenav__menu-link">Change Password</a></li>
-            <li><a href="{%url 'logout'%}" class="sidenav__menu-link">Logout</a></li>
-          </ul>
-        </li>
-
+          <li>
+            <a class="sidenav__menu-link">Your CryptoCurrency Portfolio</a>
+            <button class="sidenav__menu-toggle" aria-haspopup="true" aria-label="Open dropdown"><i class="ui-arrow-down"></i></button>
+            <ul class="sidenav__menu-dropdown">
+              <li><a href="{% url 'addCoin' %}" class="sidenav__menu-link">Add a Coin</a></li>
+              <li><a href="{% url 'viewPortfolio' %}" class="sidenav__menu-link">View Portfolio</a></li>
+            </ul>
+          </li>
+          <li>
+            <a class="sidenav__menu-link">Account</a>
+            <button class="sidenav__menu-toggle" aria-haspopup="true" aria-label="Open dropdown"><i class="ui-arrow-down"></i></button>
+            <ul class="sidenav__menu-dropdown">
+              <li><a href="{%url 'editProfile'%}" class="sidenav__menu-link">Edit Profile</a></li>
+              <li><a href="{%url 'changePassword'%}" class="sidenav__menu-link">Change Password</a></li>
+              <li><a href="{%url 'logout'%}" class="sidenav__menu-link">Logout</a></li>
+            </ul>
+          </li>
         {% else %}
-
-        <li>
-          <a href="{%url 'login'%}" class="sidenav__menu-link">Login</a>
-        </li>
-        <li>
-          <a href="{%url 'register'%}" class="sidenav__menu-link">Register</a>
-        </li>
-
+          <li>
+            <a href="{%url 'login'%}" class="sidenav__menu-link">Login</a>
+          </li>
+          <li>
+            <a href="{%url 'register'%}" class="sidenav__menu-link">Register</a>
+          </li>
         {% endif %}
       </ul>
     </nav>
@@ -99,7 +92,7 @@
     </div> <!-- end ticker -->
 
     <!-- Header -->
-    <div class="header">
+    <div class="header" id="top">
       <div class="container">
         <div class="flex-parent align-items-center">
 
@@ -111,30 +104,9 @@
           </button> <!-- end mobile toggle button -->
           
           <!-- Logo -->
-          <a href="index.html" class="logo">
-            <img class="logo__img" src="img/logo.png" srcset="img/logo.png 1x, img/logo@2x.png 2x" alt="logo">
+          <a href="{% url 'home' %}" class="logo">
+            <img class="logo__img" src="{% static 'img/logo.png' %}" srcset="{% static 'img/logo.png' %} 1x, {% static 'img/logo@2x.png' %} 2x" alt="logo">
           </a>
-
-          <!-- Search -->
-          <div class="nav__mobile-search d-lg-none">
-            <a href="#" class="nav__search-trigger">
-              <i class="ui-search nav__search-trigger-icon"></i>
-            </a>                
-          </div>
-
-          <!-- Search form -->
-          <form role="search" method="get" class="nav__search-form d-lg-none">
-            <input type="search" class="nav__search-input" placeholder="Type &amp; Hit Enter">
-            <i class="ui-close nav__search-close"></i>
-          </form> 
-
-          <!-- Ad Banner 728 -->
-          <div class="header__ad text-center d-lg-block d-none">
-            <a href="#">
-              <img src="img/blog/placeholder_leaderboard.jpg" alt="">
-            </a>
-          </div>
-
         </div>
       </div>
     </div> <!-- end header -->
@@ -155,46 +127,21 @@
             <!-- Nav-wrap -->
             <nav class="flex-child nav__wrap d-none d-lg-block">              
               <ul class="nav__menu">
-
                 <li class="active">
                   <a href="{% url 'home' %}">Home</a>
                 </li>
-
-                {%if user.is_authenticated%}
-
-                <li class="nav__dropdown">
-                  <a>Your CryptoCurrency Portfolio</a>
-                  <ul class="nav__dropdown-menu">
-                    <li><a href="{% url 'addCoin' %}">Add a Coin</a></li>
-                    <li><a href="{% url 'viewPortfolio' %}">View Portfolio</a></li>
-                  </ul>
-                </li>
-
-                <li class="nav__dropdown">
-                  <a href="#">Pages</a>
-                  <ul class="nav__dropdown-menu">
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li><a href="search-results.html">Search Results</a></li>
-                    <li><a href="categories.html">Categories</a></li>
-                    <li><a href="404.html">404</a></li>
-                  </ul>
-                </li>
-
-                <li class="nav__dropdown">
-                  <a href="#">Features</a>
-                  <ul class="nav__dropdown-menu">
-                    <li><a href="lazyload.html">Lazy Load</a></li>
-                    <li><a href="shortcodes.html">Shortcodes</a></li>
-                  </ul>
-                </li>
-
                 <li>
-                  <a href="#">Purchase</a>
+                  <a href="{% url 'about' %}">About</a>
                 </li>
-
+                {%if user.is_authenticated%}
+                  <li class="nav__dropdown">
+                    <a>Your CryptoCurrency Portfolio</a>
+                    <ul class="nav__dropdown-menu">
+                      <li><a href="{% url 'addCoin' %}">Add a Coin</a></li>
+                      <li><a href="{% url 'viewPortfolio' %}">View Portfolio</a></li>
+                    </ul>
+                  </li>
                 {% endif %}
-
               </ul> <!-- end menu -->
             </nav> <!-- end nav-wrap -->
 
@@ -231,7 +178,8 @@
         </div> <!-- end container -->
 
       </div>
-    </header> <!-- end navigation -->  
+    </header> <!-- end navigation --> 
+    <br/> 
 
     {% if messages %}
       {% for message in messages %}
@@ -254,6 +202,7 @@
     {% endblock %}
 
     <!-- Footer -->
+    <br/>
     <footer class="footer">
       <div class="container">
         <div class="footer__widgets">
@@ -261,17 +210,10 @@
 
             <div class="col-lg-4 col-md-6">
               <div class="widget">
-                <a href="index.html">
-                  <img src="img/logo.png" srcset="img/logo.png 1x, img/logo@2x.png 2x" class="logo__img" alt="">
+                <a href="{% url 'home' %}">
+                  <img src="{% static 'img/logo.png' %}" srcset="{% static 'img/logo.png' %} 1x, {% static 'img/logo@2x.png' %} 2x" class="logo__img" alt="">
                 </a>
-                <p class="mt-20 mb-30">Demo Crypto Currency News Network site. Created by Szymon Bałasz. Thanks for visiting the site - feel free to checkout the code on GitHub.</p>
-                <div class="socials">
-                  <a href="#" class="social social-facebook" aria-label="facebook"><i class="ui-facebook"></i></a>
-                  <a href="#" class="social social-twitter" aria-label="twitter"><i class="ui-twitter"></i></a>
-                  <a href="#" class="social social-google-plus" aria-label="google+"><i class="ui-google"></i></a>
-                  <a href="#" class="social social-youtube" aria-label="youtube"><i class="ui-youtube"></i></a>
-                  <a href="#" class="social social-instagram" aria-label="instagram"><i class="ui-instagram"></i></a>
-                </div>
+                <p class="mt-20 mb-30">Demo Crypto Currency News Network site. Created by Szymon Bałasz. Thanks for visiting the site - feel free to checkout the code on GitHub.</p>                
               </div>
             </div>
 
@@ -281,11 +223,11 @@
 
             <div class="col-lg-3 col-md-6">
               <div class="widget widget_nav_menu">
-                <h4 class="widget-title">Useful Links</h4>
+                <h4 class="widget-title">Links</h4>
                 <ul>
                   <li><a href="https://www.szymonbalasz.com/cv">Resume &amp CV</a></li>
                   <li><a href="https://www.szymonbalasz.com/blog/">Blog Post About CCNN</a></li>
-                  <li><a href="https://www.szymonbalasz.com/cv/#contact">Contact</a></li>
+                  <li><a href="https://www.szymonbalasz.com/cv/#mh-contact">Contact</a></li>
                 </ul>
               </div>
             </div>            

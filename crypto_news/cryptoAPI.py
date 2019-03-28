@@ -3,6 +3,7 @@ import json
 from decouple import config
 from .models import LatestAPI
 from datetime import datetime
+from django.utils.timezone import get_current_timezone
 
 def cPrice():
 	headers = {
@@ -16,7 +17,7 @@ def cPrice():
 
 	if "data" in price:
 		LatestAPI.objects.get(pk=1).setPrices(price)
-		LatestAPI.objects.get(pk=1).setLastUpdate(datetime.now())
+		LatestAPI.objects.get(pk=1).setLastUpdate(datetime.now(tz=get_current_timezone()))
 	else:
 		price = LatestAPI.objects.get(pk=1).getPrices()
 		LatestAPI.objects.get(pk=1).setErrorPrices(True)
@@ -43,7 +44,7 @@ def cNews():
 def topCoins(price):
 	topCoins = {}
 	count = 1
-	while count < 11:
+	while count < 16:
 		for prices in price['data']:
 			if prices['cmc_rank'] == count:
 				topCoins[count] = prices['symbol']
@@ -96,7 +97,7 @@ def regulationNews(allNews, exclude):
 	excludedNews = exclude
 	count = 0
 	for article in allNews['Data']:
-		if 'Regulation' in article['categories']:
+		if 'Regulation' or 'Trading' in article['categories']:
 			if article['id'] not in excludedNews:
 				news[article['id']] = article
 				excludedNews.update(news)

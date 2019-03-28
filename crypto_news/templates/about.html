@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
 
-{% block title %}CCNN | Home{% endblock %}
+{% block title %}CCNN | About{% endblock %}
 
 {% block body %}
+{% load static %}
 
     <!-- Content -->      
     <section class="section-wrap main-content">
@@ -23,7 +24,6 @@
                 <ul class="entry__meta">
                   <li class="entry__meta-author">
                     <a href="http://www.szymonbalasz.com/cv">
-                      <img src="img/blog/author.png" alt="">
                       <span>by</span>
                       <span class="entry__meta-author-name">Szymon Bałasz</span>
                     </a>
@@ -35,31 +35,28 @@
               </div>
 
               <div class="entry__img-holder">
-                <img src="img/blog/single_post_featured_img.jpg" alt="" class="entry__img">
+                <img src="{% static 'img/aboutCCNN.jpg' %}" alt="" class="entry__img">
               </div>
 
-              <div class="entry__article-wrap">
 
-                <!-- Share -->
-                <div class="entry__share">
-                  <div class="sticky-col">
-                    <div class="socials entry__share-socials">
-                      <a href="#" class="social social-facebook entry__share-social social--colored-facebook">
-                        <i class="ui-facebook"></i>
-                      </a>
-                      <a href="https://twitter.com/SzymonBalasz" class="social social-twitter entry__share-social social--colored-twitter">
-                        <i class="ui-twitter"></i>
-                      </a>
-                    </div>
-                  </div>                  
-                </div> <!-- share -->
 
                 <div class="entry__article">
-                  <p>Namira is a very slick and clean e-commerce template with endless possibilities. Creating an awesome clothes store with this Theme is easy than you can imagine. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sed vulputate massa. Fusce ante magna, iaculis ut purus ut. <a href="#">Morbi consequat purus</a> ac ultricies commodo. Integer aliquam ante a mauris gravida, vitae bibendum neque pharetra. Nulla rhoncus orci varius purus lobortis euismod. Fusce tincidunt dictum est et rhoncus. <strong>Vivamus hendrerit</strong> congue nisi, et nisl tincida vestibulum elit tincidunt eu. Vivamus ac pharetra orci, in feugiat massa. Proin congue mauris pretium, ultricies tortor in, aliquam urna. Vivamus mi tortor, finibus a interdum ac, ultricies in elit.</p>
+                  <p>Hello! Thanks for taking the time to check out my app. CCNN is an app that I developed while leanring the Django Framework. I've been programming with Python for a long time, but this was my first foray into the world of web development with a language I used exclusively for native development. The biggest challenge was wrapping my head around Django’s Model and Form. Coming from mostly C++ I wasn’t used to thinking of classes as tables./p>
 
-                  <blockquote><p>“Dreams and dedication are powerful combination.”</p>
-                  <cite>William Longgood</cite>
-                  </blockquote>
+                  <p><strong>If you have a minute</strong>, I’d appreciate if you could use the app and let me know what you think. Here’s what it does…/p>
+
+                  <h2>Your Crypto Portfolio</h2> 
+                  <p>You can create an account, complete with full user-authentication, and start inputting what kinds of crypto currency you possess. The app stores this information in a Postresql database and uses it to cross reference news feeds and crypto market values. Based on your portfolio, your home page will show news stories related to the specific currencies you hold, as well as general crypto news such as ICO’s and mining news. Then, you can view and edit your portfolio of coins and see a quick summary of their market value, growth, etc./p>
+
+                  <blockquote><p>The APIs used for this site are CryptoCompare and CoinMarketCap.</p></blockquote>
+
+                  <p>The code for this project is available on <a href="#">my GitHub page</a>. You can also read a bit more about the app and how it works on <a href="#">the blog post</a>./p>
+
+                  <p>Cheers!
+                  Szymon</p>
+
+
+                  <p>Namira is a very slick and clean e-commerce template with endless possibilities. Creating an awesome clothes store with this Theme is easy than you can imagine. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sed vulputate massa. Fusce ante magna, iaculis ut purus ut. <a href="#">Morbi consequat purus</a> ac ultricies commodo. Integer aliquam ante a mauris gravida, vitae bibendum neque pharetra. Nulla rhoncus orci varius purus lobortis euismod. Fusce tincidunt dictum est et rhoncus. <strong>Vivamus hendrerit</strong> congue nisi, et nisl tincida vestibulum elit tincidunt eu. Vivamus ac pharetra orci, in feugiat massa. Proin congue mauris pretium, ultricies tortor in, aliquam urna. Vivamus mi tortor, finibus a interdum ac, ultricies in elit.</p>
 
                   <h2>Set a bigger goals and chase them everyday</h2>            
 
@@ -72,7 +69,7 @@
                   <p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos. Lorem ipsum dolor sit amet, consectetur adipiscing elit. And finally the subconscious is the mechanism through which thought impulses which are repeated regularly with feeling and emotion are quickened, charged. And finally the subconscious is the mechanism through which thought impulses which are repeated regularly with feeling and emotion.</p>
 
                 </div>
-            </div>
+         
 	        </article>
 		    </div>
 		</div>
