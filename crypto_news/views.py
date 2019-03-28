@@ -77,3 +77,23 @@ def viewPortfolio(request):
 		messages.success(request, "API Error. Using stored crypto price data from: " + LatestAPI.objects.get(pk=1).getLastUpdate())
 	portfolio = request.user.wallet.getCoins()
 	return render(request, 'coins/viewPortfolio.html', {'price' : price, 'portfolio' : portfolio})
+
+@login_required
+def editPortfolio(request, symbol):
+	portfolio = request.user.wallet.getCoins()
+	amount = portfolio[symbol]
+	if request.method == 'POST':
+		form = AddCoinForm(request.POST or None)
+		if form.is_valid():
+			request.user.wallet.editCoins(symbol, form.cleaned_data['amount'])
+			if form.cleaned_data['amount'] > 0:
+				messages.success(request, ('Coin Successfully Edited'))
+			else:
+				messages.success(request, ('Coin Deleted'))
+			return redirect('viewPortfolio')
+		else:
+			messages.success(request, ('Error Editing Coin'))
+			return render(request, 'coins/editPortfolio.html', {'symbol' : symbol, 'amount' : amount})
+
+	else:
+		return render(request, 'coins/editPortfolio.html', {'symbol' : symbol, 'amount' : amount})

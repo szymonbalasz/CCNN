@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}CCNN | Edit Portfolio{% endblock %}
+
+{% block body %}
+
+	<br/><br/><br/><br/>
+	<h3 class="text-center">
+		<img class="crypto-rates__img" src="https://raw.githubusercontent.com/atomiclabs/cryptocurrency-icons/master/32/color/{{symbol|lower}}.png">
+		<span class='crypto-rates__name'>{{symbol}}</span>
+	</h3>
+	<br/>
+	<div class="container">
+		<div class="col-md-4 offset-md-4 text-center" >
+			<form method="POST">
+				{%csrf_token%}
+			  <input type="hidden" name="symbol" value="{{symbol}}">
+			  <div class="form-group">
+			  	<span class="form-text text-muted"><small>Enter New Value. Amounts which are 0 or lower will delete.</small></span>
+			    <input type="number" step="any" class="form-control" value={{amount}} name="amount" required="" label="Enter New Value">
+			  </div>
+			  <button type="submit" class="btn btn-secondary">Edit</button>
+			  <!--<a class="btn btn-danger" role="button" href="{% url 'deleteCoin' symbol %}">Delete</a>-->
+			</form>
+			<form method="POST">
+				{%csrf_token%}
+				<input type="hidden" name="symbol" value="{{symbol}}">
+				<input type="hidden" name="amount" value="0">
+				<br/>
+				<button type="submit" class="btn btn-danger">Delete</button>
+			</form>
+		</div>
+	</div>
+	<br/><br/><br/><br/>
+
+{% endblock %}

@@ -125,7 +125,7 @@ def ICONews(allNews, exclude):
 	excludedNews = exclude
 	count = 0
 	for article in allNews['Data']:
-		if 'ICO' in article['categories']:
+		if 'ICO' or 'BlockChain' in article['categories']:
 			if article['id'] not in excludedNews:
 				news[article['id']] = article
 				excludedNews.update(news)

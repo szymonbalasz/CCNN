@@ -18,6 +18,13 @@ class Wallet(models.Model):
 			self.wallet[symbol] = amount
 			self.save()
 
+	def editCoins(self, symbol, amount):
+		if amount > 0:
+			self.wallet[symbol] = amount
+		else:
+			del self.wallet[symbol]
+		self.save()
+
 	def getCoins(self):
 		return self.wallet
 
