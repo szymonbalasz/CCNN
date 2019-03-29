@@ -17,10 +17,20 @@
 			    	{% for x in price.data %}<option value="{{x.symbol}}">{{x.symbol}} - {{x.name}}</option>{% endfor %}</select>
 			  </div>
 			  <div class="form-group">
-			    <input type="number" step="any" class="form-control" placeholder="Enter Amount" name="amount" required="">
+			    <input type="number" step="any" class="form-control" placeholder="Enter Amount" name="amount" required="" oninput="check(this)">
 			  </div>
 			  <button type="submit" class="btn btn-secondary">Add</button>
 			</form>
+			<script>
+				 function check(input) {
+				   if (input.value <= 0) {
+				     input.setCustomValidity('The number must be greater than zero.');
+				   } else {
+				     // input is fine -- reset the error message
+				     input.setCustomValidity('');
+				   }
+				 }
+			</script>
 		</div>
 	</div>
 	<br/><br/><br/><br/>

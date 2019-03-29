@@ -19,6 +19,14 @@
 			  </div>
 			  <button type="submit" class="btn btn-secondary">Login</button>
 			</form>
+			<form method="POST">
+				{%csrf_token%}
+				<!-- Why... hello there... -->
+				<input type="hidden" value="TestAccount" name="username">
+				<input type="hidden" value="ace5b8d8" name="password">
+				<br/>
+				<button type="submit" class="btn btn-secondary">Login with Test Account</button>
+			</form>
 		</div>
 	</div>
 	<br/><br/><br/><br/>

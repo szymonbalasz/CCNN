@@ -16,11 +16,13 @@ def loginUser(request):
 		user = authenticate(request, username=username, password=password)
 		if user is not None:
 			login(request, user)
+			if user.username == "TestAccount":
+				user.wallet.populate()
 			messages.success(request, ('You Have Successfully Logged In'))
 			return redirect('home')
 		else:
 			messages.success(request, ('Error. Invalud Username/Password'))
-			return redirect('login')
+			return render(request, 'auth/login.html', {})
 	else:
 		return render(request, 'auth/login.html', {})
 
@@ -56,6 +58,9 @@ def editProfile(request):
 	if request.method == "POST":
 		form = EditProfileForm(request.POST, instance=request.user)
 		if form.is_valid():
+			if request.user.username == "TestAccount":
+				messages.success(request, ("Demo account details can't be changed"))
+				return redirect('home')
 			form.save()
 			messages.success(request, ('Profile Successfully Updated'))
 			return redirect('home')
@@ -71,6 +76,9 @@ def changePassword(request):
 	if request.method == "POST":
 		form = PasswordChangeForm(data=request.POST, user=request.user)
 		if form.is_valid():
+			if request.user.username == "TestAccount":
+				messages.success(request, ("Demo account details can't be changed"))
+				return redirect('home')
 			form.save()
 			update_session_auth_hash(request, form.user)
 			messages.success(request, ('Password Successfully Updated'))

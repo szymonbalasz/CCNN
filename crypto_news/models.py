@@ -28,6 +28,18 @@ class Wallet(models.Model):
 	def getCoins(self):
 		return self.wallet
 
+	def populate(self):
+		self.wallet = {
+			"BTC": 0.78, 
+			"EOS": 200.0, 
+			"ETH": 48.75, 
+			"LTC": 178.56, 
+			"XLM": 2500.0, 
+			"ZEC": 270.0, 
+			"DOGE": 100.0
+			}
+		self.save()
+
 class LatestAPI(models.Model):
 	prices = JSONField(default=dict)
 	news = JSONField(default=dict)

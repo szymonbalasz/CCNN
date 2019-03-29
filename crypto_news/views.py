@@ -63,7 +63,7 @@ def addCoin(request):
 			data = form.cleaned_data
 			request.user.wallet.addCoins(data['symbol'], data['amount'])
 			messages.success(request, "Coins Added") 
-			return redirect('home')
+			return redirect('viewPortfolio')
 		else:
 			messages.success(request, "Error Adding Coins")
 			return render(request, 'coins/addCoin.html', {'price' : price})

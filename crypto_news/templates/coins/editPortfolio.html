@@ -16,7 +16,7 @@
 				{%csrf_token%}
 			  <input type="hidden" name="symbol" value="{{symbol}}">
 			  <div class="form-group">
-			  	<span class="form-text text-muted"><small>Enter New Value. Amounts which are 0 or lower will delete.</small></span>
+			  	<span class="form-text text-muted"><small>Enter new value. Amounts which are 0 or lower will delete.</small></span>
 			    <input type="number" step="any" class="form-control" value={{amount}} name="amount" required="" label="Enter New Value">
 			  </div>
 			  <button type="submit" class="btn btn-secondary">Edit</button>
