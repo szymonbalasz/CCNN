@@ -1,5 +1,2 @@
 web: gunicorn ccnn.wsgi
-heroku config:add BUILDPACK_URL=https://github.com/kennethreitz/conda-buildpack.git
-if __name__ == '__main__':
-    app.run(port=33507)
-app.run(host='0.0.0.0')
+web: bokeh serve --port=$PORT --num-procs=0 --allow-websocket-origin=lit-brook-77553.herokuapp.com --address=0.0.0.0 --use-xheaders
