@@ -7,6 +7,7 @@ from .models import Wallet, LatestAPI
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from . import charts
 
 
 def home(request):
@@ -76,7 +77,15 @@ def viewPortfolio(request):
 	if LatestAPI.objects.get(pk=1).errorPrices:
 		messages.success(request, "API Error. Using stored crypto price data from: " + LatestAPI.objects.get(pk=1).getLastUpdate())
 	portfolio = request.user.wallet.getCoins()
-	return render(request, 'coins/viewPortfolio.html', {'price' : price, 'portfolio' : portfolio})
+	coinChart = charts.pieCoins(portfolio)
+	valueChart = charts.pieValue(portfolio, price)
+	display = {
+		'price' : price,
+		'portfolio' : portfolio,
+		'coinChart' : coinChart,
+		'valueChart' : valueChart
+	}
+	return render(request, 'coins/viewPortfolio.html', display)
 
 @login_required
 def editPortfolio(request, symbol):

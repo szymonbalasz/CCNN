@@ -36,7 +36,10 @@ class Wallet(models.Model):
 			"LTC": 178.56, 
 			"XLM": 2500.0, 
 			"ZEC": 270.0, 
-			"DOGE": 100.0
+			"DOGE": 100.0,
+			"BSV": 40,
+			"DASH": 750,
+			"USDT": 410
 			}
 		self.save()
 

@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
 
-{% block title %}CCNN | Add Crypto Coin{% endblock %}
+{% block title %}CCNN | Portfolio{% endblock %}
 
 {% block body %}
 {% load mathfilters %}
+{% load extraTags %}
 
 	<br/><br/><br/><br/>
 	<h2 class="text-center">Your Crypto Portfolio</h2>
@@ -63,7 +64,22 @@
 		  	{% endfor %}
 		  </tbody>
 		</table>
+	</div>	
+	<br/>			
+	<div class="container">
+		<hr>
+		<br/>
+		<div class="row">
+			<div class="col-6">
+				{{ coinChart|get_item:'script' | safe }}
+				{{ coinChart|get_item:'div' | safe }}
+			</div>
+			<div class="col-6">
+				{{ valueChart|get_item:'script' | safe }}
+				{{ valueChart|get_item:'div' | safe }}
+			</div>
+		</div>
 	</div>
-			<br/><br/><br/><br/>
+	
 
 {% endblock %}
