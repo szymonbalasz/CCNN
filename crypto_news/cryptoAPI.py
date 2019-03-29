@@ -83,7 +83,7 @@ def miningNews(allNews, exclude):
 	excludedNews = exclude
 	count = 0
 	for article in allNews['Data']:
-		if 'Mining' in article['categories']:
+		if 'Mining' or 'Blockchain' in article['categories']:
 			if article['id'] not in excludedNews:
 				news[article['id']] = article
 				excludedNews.update(news)
@@ -125,7 +125,7 @@ def ICONews(allNews, exclude):
 	excludedNews = exclude
 	count = 0
 	for article in allNews['Data']:
-		if 'ICO' or 'BlockChain' in article['categories']:
+		if 'ICO' or 'Blockchain' in article['categories']:
 			if article['id'] not in excludedNews:
 				news[article['id']] = article
 				excludedNews.update(news)

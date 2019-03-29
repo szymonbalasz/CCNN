@@ -18,6 +18,7 @@ def loginUser(request):
 			login(request, user)
 			if user.username == "TestAccount":
 				user.wallet.populate()
+				messages.success(request, ('Demo account portfolio will be reset after each session'))
 			messages.success(request, ('You Have Successfully Logged In'))
 			return redirect('home')
 		else:
