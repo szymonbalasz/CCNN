@@ -14,7 +14,7 @@ def pieCoins(portfolio):
 	data['angle'] = data['value']/data['value'].sum() * 2 * pi
 	data['color'] = Category20[len(portfolio)]
 
-	p = figure(plot_height=500, plot_width=500, title="Portfolio Distribution by Coin Type", toolbar_location=None, 
+	p = figure(plot_height=450, plot_width=450, title="Portfolio Distribution by Coin Type", toolbar_location=None, 
 		tools="hover", tooltips="@symbol: @value", x_range=(-0.5, 1.0))
 	p.wedge(x=0, y=1, radius=0.4,
 		start_angle=cumsum('angle', include_zero=True), end_angle=cumsum('angle'), 
@@ -49,7 +49,7 @@ def pieValue(portfolio, price):
 	for index, row in data.iterrows():
 		data.loc[index, 'value'] = ("{0:.2f}".format(data.loc[index, 'value']))
 
-	p = figure(plot_height=500, plot_width=500, title="Portfolio Distribution by Coin $ Value", toolbar_location=None, 
+	p = figure(plot_height=450, plot_width=450, title="Portfolio Distribution by Coin $ Value", toolbar_location=None, 
 		tools="hover", tooltips="@symbol: $@value", x_range=(-0.5, 1.0))
 	p.wedge(x=0, y=1, radius=0.4,
 		start_angle=cumsum('angle', include_zero=True), end_angle=cumsum('angle'), 

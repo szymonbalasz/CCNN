@@ -9,7 +9,7 @@
 	<br/><br/><br/><br/>
 	<h2 class="text-center">Your Crypto Portfolio</h2>
 	<br/><br/>
-	<div class="container widget widget-crypto-rates">
+	<div class="container widget widget-crypto-rates table-responsive">
 		<table class="table table-striped table-borderless table-hover">
 		  <thead>
 		    <tr>
@@ -69,16 +69,17 @@
 		  </tbody>
 		</table>
 	</div>	
-	<br/>			
+	<br/>	
+
 	<div class="container">
 		<hr>
 		<br/>
 		<div class="row">
-			<div class="col-6">
+			<div class="col-sm-6" align="center">
 				{{ coinChart|get_item:'script' | safe }}
 				{{ coinChart|get_item:'div' | safe }}
 			</div>
-			<div class="col-6">
+			<div class="col-sm-6" align="center">
 				{{ valueChart|get_item:'script' | safe }}
 				{{ valueChart|get_item:'div' | safe }}
 			</div>
