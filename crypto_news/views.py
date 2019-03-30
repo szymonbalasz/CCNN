@@ -11,24 +11,34 @@ from . import charts
 
 
 def home(request):
+	#cryptoAPI.cPrice() and cNews() returns either the latest or stored api data. adds to loading time of page
 	price = cryptoAPI.cPrice()
 	topCoins = cryptoAPI.topCoins(price)
 	news = cryptoAPI.cNews()
+	
 	if request.user.is_authenticated:
 		portfolio = request.user.wallet.getCoins()
 	else:
 		portfolio = {}
+	
 	excludedNews = {}
+
+	#with each news block on the home.html page we exclude whatever news was already assigned to previous slots
 	businessNews = cryptoAPI.businessNews(news)
 	excludedNews.update(businessNews)
+
 	coinNews = cryptoAPI.coinNews(portfolio, news, excludedNews)
 	excludedNews.update(coinNews)
+
 	miningNews = cryptoAPI.miningNews(news, excludedNews)
 	excludedNews.update(miningNews)
+
 	regulationNews = cryptoAPI.regulationNews(news, excludedNews)
 	excludedNews.update(regulationNews)
+
 	marketNews = cryptoAPI.marketNews(news, excludedNews)
 	excludedNews.update(marketNews)
+
 	ICONews = cryptoAPI.ICONews(news, excludedNews)
 
 	if LatestAPI.objects.get(pk=1).errorPrices:
@@ -77,8 +87,13 @@ def viewPortfolio(request):
 	if LatestAPI.objects.get(pk=1).errorPrices:
 		messages.success(request, "API Error. Using stored crypto price data from: " + LatestAPI.objects.get(pk=1).getLastUpdate())
 	portfolio = request.user.wallet.getCoins()
+
+	#bokeh charts. using the components feature from the embedded library. haven't found a way to use the heroku
+	#free dynos with gunicorn and bokeh running at the same time. solution is a bit slower but for this size website
+	#it isn't noticable
 	coinChart = charts.pieCoins(portfolio)
 	valueChart = charts.pieValue(portfolio, price)
+	
 	display = {
 		'price' : price,
 		'portfolio' : portfolio,
@@ -89,12 +104,16 @@ def viewPortfolio(request):
 
 @login_required
 def editPortfolio(request, symbol):
+	#symbol is placed in the url path. user can direcly edit a coin by going directly to editPortfolio/coin page
 	portfolio = request.user.wallet.getCoins()
 	amount = portfolio[symbol]
 	if request.method == 'POST':
 		form = AddCoinForm(request.POST or None)
 		if form.is_valid():
 			request.user.wallet.editCoins(symbol, form.cleaned_data['amount'])
+			
+			#the editCoins member function on the model deletes the coin when amound entered is 0 or less
+			#on the template the user is unable to enter a value of <= 0. Deleting is dependent on button
 			if form.cleaned_data['amount'] > 0:
 				messages.success(request, ('Coin Successfully Edited'))
 			else:

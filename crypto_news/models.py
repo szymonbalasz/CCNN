@@ -3,6 +3,8 @@ from django.contrib.auth.models import User
 from django.contrib.postgres.fields import JSONField
 from datetime import datetime
 
+#extensive use of setters and getters functions. a byproduct from my C++ background. likely a bad habbit in py
+
 class Wallet(models.Model):
 	owner = models.OneToOneField(User, on_delete=models.CASCADE, related_name="wallet")
 	wallet = JSONField(default=dict)
@@ -28,6 +30,7 @@ class Wallet(models.Model):
 	def getCoins(self):
 		return self.wallet
 
+	#arbitrarily decided to ensure somewhat interesting distribution, especially on pie chart
 	def populate(self):
 		self.wallet = {
 			"BTC": 0.7878, 

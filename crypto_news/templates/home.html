@@ -63,6 +63,7 @@
             <section>
               <h3 class="section-title h2">Your Portfolio Coin News</h3>
               <div class="row">
+                {% if user.is_authenticated %}
               	{% for article, info in coinNews.items %}
 	                <div class="col-lg-4 col-md-6">
 	                  <article class="entry">
@@ -84,6 +85,15 @@
 	                  </article>
 	                </div>
                 {% endfor %}
+                {% else %}
+                  <div>
+                    <article class="entry">
+                    <h2 class="entry__title entry__title--medium">
+                                Please <a href="{% url 'login' %}">Login</a> to view news specific to your currently held Crypto Currency.
+                    </h2>
+                  </article>
+                  </div>
+                {% endif %}
               </div> 
             </section> <!-- end Portfolio news -->
 

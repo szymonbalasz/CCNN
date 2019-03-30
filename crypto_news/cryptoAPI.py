@@ -52,6 +52,8 @@ def topCoins(price):
 	return topCoins
 
 
+#news blocks are seperated on home template. each function pulls news from category and excludes if from future pulls
+
 def businessNews(allNews):
 	news = {}
 	count = 0

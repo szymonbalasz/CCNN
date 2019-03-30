@@ -44,6 +44,8 @@ def pieValue(portfolio, price):
 	data['angle'] = data['value']/data['value'].sum() * 2 * pi
 	data['color'] = Category20[len(values)]
 
+	#cleaning up floating port numbers in pandas dataset. 
+	#else the pie chart would show most currencies in lengthy scientific notation
 	for index, row in data.iterrows():
 		data.loc[index, 'value'] = ("{0:.2f}".format(data.loc[index, 'value']))
 
