@@ -30,16 +30,16 @@ class Wallet(models.Model):
 
 	def populate(self):
 		self.wallet = {
-			"BTC": 0.78, 
+			"BTC": 0.7878, 
 			"EOS": 200.0, 
-			"ETH": 48.75, 
-			"LTC": 178.56, 
+			"ETH": 31.751, 
+			"LTC": 78.563, 
 			"XLM": 2500.0, 
-			"ZEC": 270.0, 
-			"DOGE": 100.0,
+			"ZEC": 129.11, 
+			"DOGE": 1000.0,
 			"BSV": 40,
-			"DASH": 750,
-			"USDT": 410
+			"DASH": 18.4,
+			"USDT": 580
 			}
 		self.save()
 
