@@ -37,7 +37,7 @@ class Wallet(models.Model):
 			"EOS": 200.0, 
 			"ETH": 31.751, 
 			"LTC": 78.563, 
-			"XLM": 2500.0, 
+			"XLM": 1300.0, 
 			"ZEC": 129.11, 
 			"DOGE": 1000.0,
 			"BSV": 40,

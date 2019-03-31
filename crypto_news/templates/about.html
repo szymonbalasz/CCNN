@@ -41,12 +41,19 @@
 
 
                 <div class="entry__article">
-                  <p>Hello! Thanks for taking the time to check out my app. CCNN is an app that I developed while leanring the Django Framework. I've been programming with Python for a long time, but this was my first foray into the world of web development with a language I used exclusively for native development. The biggest challenge was wrapping my head around Django’s Model and Form. Coming from mostly C++ I wasn’t used to thinking of classes as tables.</p>
+                  <p>Hello! Thanks for taking the time to check out my app. CCNN is an app that I developed while leanring the Django Framework.</p>
 
                   <p><strong>If you have a minute</strong>, I’d appreciate if you could use the app and let me know what you think. Here’s what it does…</p>
 
+                  <h2>Your Crypto News</h2>
+                 <p> The app fetches and serves news sorted by category. On the Home page there are some general news categies but the main section uses data from your saved crypto coins. Based on your portfolio, your home page will show news stories related to the specific currencies you hold.</p>
+
+                <div class="entry__img-holder">
+                  <img src="{% static 'img/portfolio.png' %}" alt="" class="entry__img">
+                </div>
+                  
                   <h2>Your Crypto Portfolio</h2> 
-                  <p>You can <a href="{% url 'register' %}">create an account</a>, complete with full user-authentication, and start inputting what kinds of crypto currency you possess. The app stores this information in a Postresql database and uses it to cross reference news feeds and crypto market values. Based on your portfolio, your home page will show news stories related to the specific currencies you hold, as well as general crypto news such as ICO’s and mining news. Then, you can view and edit your portfolio of coins and see a quick summary of their market value, growth, etc.</p>
+                  <p>You can <a href="{% url 'register' %}">create an account</a>, complete with full user-authentication, and start inputting what kinds of crypto currency you possess. The app stores this information in a Postresql database and uses it to cross reference news feeds and crypto market values.  Then, you can view and edit your portfolio of coins and see a quick summary of their market value, growth, etc. The data visualization comes from the Bokeh Components library</p>
 
                   <blockquote><p>The APIs used for this site are <a href="https://min-api.cryptocompare.com/">CryptoCompare</a> and <a href="https://coinmarketcap.com/api/">CoinMarketCap</a>.</p></blockquote>
 
