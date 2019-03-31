@@ -69,8 +69,8 @@
 		  </tbody>
 		</table>
 	</div>	
-	<br/>	
-
+	<br/>
+	{% if not pError %}
 	<div class="container">
 		<hr>
 		<br/>
@@ -85,6 +85,13 @@
 			</div>
 		</div>
 	</div>
+	{% else %}
+	<div class="container text-center">
+		<hr>
+		<br/>
+		<span>Please add at least three currencies to your portfolio to view charts</span>
+	</div>
+	{% endif %}
 	
 
 {% endblock %}

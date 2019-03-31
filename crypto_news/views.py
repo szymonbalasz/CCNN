@@ -88,17 +88,28 @@ def viewPortfolio(request):
 		messages.success(request, "API Error. Using stored crypto price data from: " + LatestAPI.objects.get(pk=1).getLastUpdate())
 	portfolio = request.user.wallet.getCoins()
 
+	if  len(portfolio) == 0:
+		messages.success(request, "Please add at least one currency to your portfolio")
+		return redirect('addCoin')
+
 	#bokeh charts. using the components feature from the embedded library. haven't found a way to use the heroku
 	#free dynos with gunicorn and bokeh running at the same time. solution is a bit slower but for this size website
 	#it isn't noticable
-	coinChart = charts.pieCoins(portfolio)
-	valueChart = charts.pieValue(portfolio, price)
+	if len(portfolio) > 2:
+		coinChart = charts.pieCoins(portfolio)
+		valueChart = charts.pieValue(portfolio, price)
+		pError = False
+	else:
+		coinChart = {}
+		valueChart = {}
+		pError = True
 	
 	display = {
 		'price' : price,
 		'portfolio' : portfolio,
 		'coinChart' : coinChart,
-		'valueChart' : valueChart
+		'valueChart' : valueChart,
+		'pError' : pError
 	}
 	return render(request, 'coins/viewPortfolio.html', display)
 
