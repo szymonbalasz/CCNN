@@ -59,7 +59,7 @@
 						    	<span class='crypto-rates__percent crypto-rates__percent--down'>{{x.quote.USD.percent_change_24h|floatformat:2}}%</span>
 							</td>
 					    {% endif %}
-					    <td>{{amount}}</td>
+					    <td>{{amount|floatformat:2}}</td>
 					    <td>$ {{x.quote.USD.price|mul:amount|floatformat:2}}</td>
 					    <td class="text-center"><a class="btn btn-warning" href="{% url 'editPortfolio' x.symbol %}" role="button">Edit</a></td>
 				    </tr>
